@@ -5,7 +5,7 @@ import BlurText from './BlurText.vue'
 interface Step {
   icon: string
   title: string
-  desc: string
+  desc?: string
 }
 
 interface Props {
