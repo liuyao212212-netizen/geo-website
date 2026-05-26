@@ -530,13 +530,6 @@ const galleryItems = [
   line-height: 1.3 !important;
 }
 
-.advantage-desc {
-  font-size: $text-sm !important;
-  color: $text-tertiary !important;
-  line-height: 1.6 !important;
-  max-width: 240px !important;
-}
-
 // ========== SECTION 4: 系统赋能 - Circular Gallery ==========
 .gallery-container {
   width: 100%;
