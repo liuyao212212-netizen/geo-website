@@ -9,31 +9,11 @@ import CircularGallery from '../components/CircularGallery.vue'
 
 // ========== Section 2: 核心功能 - Timeline Steps ==========
 const coreFunctions = [
-  {
-    icon: '📡',
-    title: 'AI可见度监测',
-    desc: '覆盖ChatGPT、Kimi、DeepSeek、豆包、通义千问、文心一言、智谱清言7大主流AI平台，实时追踪品牌被提及频次、引用深度和推荐排名'
-  },
-  {
-    icon: '🧬',
-    title: '语义结构优化',
-    desc: '解析AI大模型的语义理解逻辑，针对不同平台的内容偏好进行语义结构化改造，提升品牌内容被AI自然引用的概率'
-  },
-  {
-    icon: '🎯',
-    title: '精准内容训练',
-    desc: '基于GEO诊断报告，生成专属内容训练方案，通过高权威语料投喂和结构化内容建设，训练AI优先推荐品牌'
-  },
-  {
-    icon: '🔄',
-    title: '实时策略迭代',
-    desc: 'AI模型持续更新迭代，智优系统同步调整优化策略，确保品牌GEO效果随AI演进持续领先'
-  },
-  {
-    icon: '📋',
-    title: 'GEO诊断报告',
-    desc: '一键生成品牌GEO健康度诊断报告，涵盖AI可见度评分、竞品对比、优化建议、预期效果等核心指标'
-  }
+  { icon: '📡', title: 'AI可见度监测' },
+  { icon: '🧬', title: '语义结构优化' },
+  { icon: '🎯', title: '精准内容训练' },
+  { icon: '🔄', title: '实时策略迭代' },
+  { icon: '📋', title: 'GEO诊断报告' }
 ]
 
 // ========== Section 3: 系统优势 - 数据卡片 ==========
