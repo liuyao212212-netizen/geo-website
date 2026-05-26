@@ -55,14 +55,6 @@ const hoveredIndex = ref<number | null>(null)
           className="timeline-title"
           :stepDuration="0.3"
         />
-        <BlurText
-          :text="step.desc"
-          :delay="20"
-          animateBy="words"
-          direction="bottom"
-          className="timeline-desc"
-          :stepDuration="0.2"
-        />
       </div>
     </div>
   </div>
@@ -171,9 +163,4 @@ const hoveredIndex = ref<number | null>(null)
   line-height: 1.3 !important;
 }
 
-.timeline-desc {
-  font-size: $text-sm !important;
-  color: $text-tertiary !important;
-  line-height: 1.6 !important;
-}
 </style>
