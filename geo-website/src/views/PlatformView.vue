@@ -156,14 +156,6 @@ const galleryItems = [
                   className="functions-left-title"
                   :stepDuration="0.4"
                 />
-                <BlurText
-                  text="从监测到优化，智优平台提供完整的GEO闭环能力"
-                  :delay="30"
-                  animateBy="words"
-                  direction="bottom"
-                  className="functions-left-desc"
-                  :stepDuration="0.25"
-                />
               </div>
             </div>
 
@@ -443,12 +435,6 @@ const galleryItems = [
   color: $text-primary !important;
   line-height: 1.3 !important;
   letter-spacing: 0.02em !important;
-}
-
-.functions-left-desc {
-  font-size: $text-sm !important;
-  color: $text-secondary !important;
-  line-height: 1.7 !important;
 }
 
 .functions-right {
