@@ -41,26 +41,22 @@ const advantages = [
   {
     number: '7',
     unit: '大AI平台',
-    label: '全覆盖监测',
-    desc: 'ChatGPT、Kimi、DeepSeek、豆包、通义千问、文心一言、智谱清言'
+    label: '全覆盖监测'
   },
   {
     number: '50+',
     unit: '优化维度',
-    label: '全方位诊断',
-    desc: '从语义结构到内容权威度，50+维度深度评估GEO健康度'
+    label: '全方位诊断'
   },
   {
     number: '24/7',
     unit: '实时监控',
-    label: '不间断追踪',
-    desc: '全天候监测品牌AI可见度变化，第一时间预警波动风险'
+    label: '不间断追踪'
   },
   {
     number: '3×',
     unit: '效果提升',
-    label: '显著增长',
-    desc: '平均提升品牌AI提及率3倍以上，优化周期缩短60%'
+    label: '显著增长'
   }
 ]
 
