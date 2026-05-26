@@ -1,0 +1,128 @@
+/* ============================================================
+   cases-loader.css — cases.html 开屏粒子纠缠加载动画
+   ────────────────────────────────────────────────
+   双集群粒子从左右飞入,交织成网,中央定格 wordmark,
+   总时长约 1.8s,与首页 #38BDF8 + #0A1428 + #FFFFFF 色系一致
+   ============================================================ */
+
+.cases-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(
+      60% 50% at 50% 50%,
+      #0B1A33 0%,
+      #06101F 60%,
+      #02060E 100%
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity .42s ease;
+}
+
+.cases-loader.is-fading {
+  opacity: 0;
+}
+
+.cases-loader.is-gone {
+  display: none;
+}
+
+/* 中央光晕底层 */
+.cases-loader::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(
+      circle,
+      rgba(56, 189, 248, .18) 0%,
+      rgba(56, 189, 248, .08) 30%,
+      transparent 65%
+    );
+  filter: blur(20px);
+  opacity: 0;
+  animation: cases-loader-halo 1.8s cubic-bezier(.22, .61, .36, 1) forwards;
+}
+
+@keyframes cases-loader-halo {
+  0%   { opacity: 0; transform: scale(.4); }
+  45%  { opacity: 1; transform: scale(1); }
+  80%  { opacity: .8; transform: scale(1.08); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* Canvas 渲染区 */
+.cases-loader__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 中心 wordmark 容器 */
+.cases-loader__wordmark {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: cases-loader-wordmark 1.8s cubic-bezier(.22, .61, .36, 1) forwards;
+}
+
+@keyframes cases-loader-wordmark {
+  0%, 32%   { opacity: 0; transform: translateY(8px) scale(.96); filter: blur(8px); }
+  50%       { opacity: 1; transform: translateY(0) scale(1);     filter: blur(0); }
+  82%       { opacity: 1; transform: translateY(0) scale(1);     filter: blur(0); }
+  100%      { opacity: 0; transform: translateY(-4px) scale(1.02); filter: blur(2px); }
+}
+
+.cases-loader__brand {
+  display: block;
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: #FFFFFF;
+  text-shadow: 0 0 24px rgba(56, 189, 248, .55);
+  margin-bottom: 6px;
+}
+
+.cases-loader__brand em {
+  font-style: normal;
+  background: linear-gradient(135deg, #38BDF8, #FFFFFF 65%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-left: 8px;
+}
+
+.cases-loader__tagline {
+  display: block;
+  font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: .24em;
+  color: rgba(148, 184, 235, .8);
+  text-transform: uppercase;
+}
+
+/* 阻断滚动 */
+body.cases-loader-active {
+  overflow: hidden;
+}
+
+/* reduced-motion 兜底 */
+@media (prefers-reduced-motion: reduce) {
+  .cases-loader { transition: opacity .2s ease; }
+  .cases-loader::before { animation: none; opacity: 0; }
+  .cases-loader__canvas { display: none; }
+  .cases-loader__wordmark {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "geo-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "motion-v": "^2.2.1",
+    "ogl": "^1.0.11",
+    "three": "^0.184.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "@types/three": "^0.184.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "sass": "^1.83.0",
+    "typescript": "~5.7.2",
+    "vite": "^5.4.14",
+    "vue-tsc": "^2.2.0"
+  }
+}

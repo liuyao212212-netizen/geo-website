@@ -1,0 +1,89 @@
+// ============================================
+// Design Tokens - 智优康赛 GEO 官网
+// ============================================
+
+// Colors
+$bg-primary: #03040a;
+$bg-secondary: #0a0b14;
+$bg-elevated: #11121e;
+
+$accent-purple: #4b33ff;
+$accent-blue: #4c75ff;
+$accent-cyan: #00d4ff;
+
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.7);
+$text-tertiary: rgba(255, 255, 255, 0.45);
+
+$border-subtle: rgba(255, 255, 255, 0.08);
+$border-medium: rgba(255, 255, 255, 0.12);
+$border-strong: rgba(255, 255, 255, 0.18);
+
+// Gradients
+$gradient-hero: linear-gradient(135deg, #4b33ff 0%, #4c75ff 50%, #00d4ff 100%);
+$gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+$gradient-glow: radial-gradient(ellipse at center, rgba(75, 51, 255, 0.15) 0%, transparent 70%);
+
+// Typography
+$font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+
+$text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+$text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+$text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+$text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+$text-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+$text-2xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+$text-3xl: clamp(2.5rem, 2rem + 3vw, 5.5rem);
+
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+$line-height-tight: 1.1;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Spacing
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+$space-32: 8rem;
+
+// Layout
+$container-max: 1280px;
+$container-padding: clamp(1.5rem, 5vw, 4rem);
+
+// Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-pill: 9999px;
+
+// Shadows
+$shadow-glow: 0 0 40px rgba(75, 51, 255, 0.2);
+$shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index
+$z-base: 1;
+$z-sticky: 100;
+$z-modal: 1000;
+$z-toast: 1100;

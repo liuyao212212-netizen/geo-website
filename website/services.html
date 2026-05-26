@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资源中心 - 智优康赛</title>
+  <link rel="stylesheet" href="./assets/css/common.css?v=safari-1">
+  <link rel="stylesheet" href="./components/liquid-glass/liquid-glass.css">
+  <link rel="stylesheet" href="./assets/css/header.css?v=nav-submenu-3">
+  <link rel="stylesheet" href="./assets/css/footer.css?v=footer-static-1">
+  <link rel="stylesheet" href="./assets/css/reveal.css?v=safari-1">
+  <link rel="stylesheet" href="./assets/css/liquid-glass-site.css?v=global-bg-preview-2">
+  <link rel="stylesheet" href="./assets/css/services.css?v=resource-center-44">
+</head>
+<body class="services-body resource-loading">
+  <div class="resource-loader" data-resource-loader aria-hidden="true">
+    <div class="resource-loader__media" data-loader-media>
+      <video class="resource-loader__video" data-resource-video data-resource-loader-video muted loop playsinline webkit-playsinline preload="metadata" poster="./assets/images/hero/section-3-bg.webp" data-pc-src="./assets/videos/resource-center_bg_pc.mp4" data-sp-src="./assets/videos/resource-center_bg_sp.mp4"></video>
+      <div class="resource-loader__shade"></div>
+    </div>
+    <div class="resource-loader__logo" data-loader-logo>
+      <img src="./assets/images/logo/footer-logo.webp" alt="">
+    </div>
+  </div>
+
+  <header class="tec-header header--floating">
+    <nav class="tec-nav" aria-label="Reusable header">
+      <div class="tec-left">
+        <a class="tec-logo" href="index.html" aria-label="智优康赛">
+          <img src="./assets/images/logo/header-logo.png" alt="智优康赛">
+        </a>
+      </div>
+      <ul class="tec-menu">
+        <li class="tec-jelly" aria-hidden="true"></li>
+        <li><a href="index.html">首页</a></li>
+        <li class="has-submenu">
+          <a href="solutions.html">GEO 解决方案</a>
+          <ul class="tec-submenu">
+            <li><a href="solutions.html#overview">全方位 GEO</a></li>
+            <li><a href="solutions.html#ai-platforms">主流平台</a></li>
+            <li><a href="solutions.html#strategy">优化策略</a></li>
+            <li><a href="solutions.html#principles">GEO 法则</a></li>
+            <li><a href="solutions.html#results">GEO 成效</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="cases.html">客户案例</a>
+          <ul class="tec-submenu">
+            <li><a href="cases.html#data">数据案例</a></li>
+            <li><a href="cases.html#testimonials">客户评价</a></li>
+            <li><a href="cases.html#partners">合作伙伴</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="demo.html">智优平台</a>
+          <ul class="tec-submenu">
+            <li><a href="demo.html#system">自研系统</a></li>
+            <li><a href="demo.html#abilities">核心能力</a></li>
+            <li><a href="demo.html#advantages">系统优势</a></li>
+            <li><a href="demo.html#empower">系统赋能</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="about.html">关于我们</a>
+          <ul class="tec-submenu">
+            <li><a href="about.html#about">公司介绍</a></li>
+            <li><a href="about.html#endorsement">行业背书</a></li>
+            <li><a href="about.html#business">核心业务</a></li>
+            <li><a href="about.html#authority">权威展示</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu active">
+          <a href="services.html">资源中心</a>
+          <ul class="tec-submenu">
+            <li><a href="services.html#whitepaper">GEO 白皮书</a></li>
+            <li><a href="services.html#alliance">GEO 联盟</a></li>
+            <li><a href="services.html#faq">GEO 常见问题</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="tec-actions">
+        <a class="tec-cta tec-cta-primary lg-btn" href="index.html#section-6">
+          <span class="cta-mask"></span>
+          <span class="cta-text">预约诊断</span>
+        </a>
+        <a class="tec-cta tec-cta-secondary lg-btn" href="index.html#section-6">
+          <span class="cta-mask"></span>
+          <span class="cta-text">联系我们</span>
+        </a>
+      </div>
+      <button class="tec-menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span class="sr-only">打开菜单</span>
+      </button>
+    </nav>
+    <div class="mobile-menu-overlay" id="mobile-menu" aria-hidden="true">
+      <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+        <ul class="mobile-menu-list">
+          <li><a href="index.html">首页</a></li>
+          <li class="has-submenu">
+            <button type="button" class="mobile-submenu-toggle" aria-expanded="false">
+              <span>GEO 解决方案</span>
+              <svg class="mobile-submenu-arrow" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2 L10 10 L18 2"></path></svg>
+            </button>
+            <ul class="mobile-submenu">
+              <li><a href="solutions.html">全方位 GEO</a></li>
+              <li><a href="solutions.html#ai-platforms">主流平台</a></li>
+              <li><a href="solutions.html#strategy">优化策略</a></li>
+              <li><a href="solutions.html#principles">GEO 法则</a></li>
+              <li><a href="solutions.html#results">GEO 成效</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <button type="button" class="mobile-submenu-toggle" aria-expanded="false">
+              <span>客户案例</span>
+              <svg class="mobile-submenu-arrow" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2 L10 10 L18 2"></path></svg>
+            </button>
+            <ul class="mobile-submenu">
+              <li><a href="cases.html">数据案例</a></li>
+              <li><a href="cases.html#testimonials">客户评价</a></li>
+              <li><a href="cases.html#partners">合作伙伴</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <button type="button" class="mobile-submenu-toggle" aria-expanded="false">
+              <span>智优平台</span>
+              <svg class="mobile-submenu-arrow" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2 L10 10 L18 2"></path></svg>
+            </button>
+            <ul class="mobile-submenu">
+              <li><a href="demo.html">自研系统</a></li>
+              <li><a href="demo.html#abilities">核心能力</a></li>
+              <li><a href="demo.html#advantages">系统优势</a></li>
+              <li><a href="demo.html#empower">系统赋能</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <button type="button" class="mobile-submenu-toggle" aria-expanded="false">
+              <span>关于我们</span>
+              <svg class="mobile-submenu-arrow" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2 L10 10 L18 2"></path></svg>
+            </button>
+            <ul class="mobile-submenu">
+              <li><a href="about.html">公司介绍</a></li>
+              <li><a href="about.html#endorsement">行业背书</a></li>
+              <li><a href="about.html#business">核心业务</a></li>
+              <li><a href="about.html#authority">权威展示</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu is-active" data-open="true">
+            <button type="button" class="mobile-submenu-toggle" aria-expanded="true">
+              <span>资源中心</span>
+              <svg class="mobile-submenu-arrow" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2 L10 10 L18 2"></path></svg>
+            </button>
+            <ul class="mobile-submenu">
+              <li><a href="services.html">GEO 白皮书</a></li>
+              <li><a href="services.html#alliance">GEO 联盟</a></li>
+              <li><a href="services.html#faq">GEO 常见问题</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="services-main" aria-label="资源中心">
+    <section class="resource-hero" data-bg-preview-root>
+      <video class="resource-hero__video" data-resource-video data-resource-hero-video muted loop playsinline webkit-playsinline preload="metadata" poster="./assets/images/hero/section-3-bg.webp" data-pc-src="./assets/videos/resource-center_bg_pc.mp4" data-sp-src="./assets/videos/resource-center_bg_sp.mp4"></video>
+      <div class="resource-hero__mask" aria-hidden="true"></div>
+      <div class="resource-hero__particles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="resource-hero__inner">
+        <h1 class="resource-hero__title" data-resource-title>
+          <span>资源中心</span>
+        </h1>
+      </div>
+    </section>
+
+    <section id="whitepaper" class="resource-whitepaper resource-whitepaper--bento" data-whitepaper-section aria-label="GEO 白皮书" data-bg-preview-root>
+      <div class="resource-whitepaper__ambient" aria-hidden="true"></div>
+      <div class="resource-whitepaper__inner">
+        <div class="resource-whitepaper__copy">
+          <h2>
+            <span><span class="geo-highlight">GEO</span> 全域流量协同</span>
+            <span>打造品牌增长超级引擎</span>
+          </h2>
+          <p class="resource-whitepaper__lead">AI 搜索时代的最优解不是 <span class="geo-highlight">GEO</span> 或 SEO 的 “二选一” ， 而是两者的 “流量协同作战” 。</p>
+        </div>
+
+        <div class="resource-whitepaper__bento" aria-label="GEO 白皮书内容">
+          <div class="whitepaper-bento-column whitepaper-bento-column--side">
+            <article class="whitepaper-bento-card whitepaper-bento-card--square" data-color="cyan">
+              <span class="whitepaper-bento-card__glow"></span>
+              <div class="whitepaper-bento-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16"></path><path d="M4 12h10"></path><path d="M4 17h7"></path></svg>
+              </div>
+              <div class="whitepaper-bento-card__body">
+                <h3><span class="geo-highlight">GEO</span> 全域流量协同</h3>
+                <p>打造品牌增长超级引擎</p>
+              </div>
+            </article>
+
+            <article class="whitepaper-bento-card whitepaper-bento-card--square" data-color="indigo">
+              <span class="whitepaper-bento-card__glow"></span>
+              <div class="whitepaper-bento-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 13 5 5L20 6"></path></svg>
+              </div>
+              <div class="whitepaper-bento-card__body">
+                <h3>流量协同作战</h3>
+                <p>AI 搜索时代的最优解不是 <span class="geo-highlight">GEO</span> 或 SEO 的 “二选一” ，而是两者的 “流量协同作战” 。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="whitepaper-bento-column whitepaper-bento-column--center">
+            <article class="whitepaper-bento-card whitepaper-bento-card--wide" data-color="violet">
+              <span class="whitepaper-bento-card__glow"></span>
+              <div class="whitepaper-bento-card__body">
+                <h3>为何 <span class="geo-highlight">GEO</span> 将成为 AI 时代的 “必答题” ？</h3>
+                <p><span class="geo-highlight">GEO</span>（AI 搜索优化）的核心价值，并不体现在短期曝光或单次流量增长上，而在于品牌在 AI 决策体系中的长期信任占位。</p>
+              </div>
+            </article>
+
+            <article class="whitepaper-bento-card whitepaper-bento-card--wide" data-color="emerald">
+              <span class="whitepaper-bento-card__glow"></span>
+              <div class="whitepaper-bento-card__body">
+                <h3>内容与数据基础设施构建</h3>
+                <p>从技术角度看，<span class="geo-highlight">GEO</span> 的效果并非来源于简单的提示词或平台投放，而是建立在内容是否 “可被 AI 理解与信任” 之上。</p>
+              </div>
+            </article>
+
+            <article class="whitepaper-bento-card whitepaper-bento-card--wide" data-color="cyan">
+              <span class="whitepaper-bento-card__glow"></span>
+              <div class="whitepaper-bento-card__body">
+                <h3>战略、内容与数据的一体化构建</h3>
+                <p>这些特征，使内容不仅适合人类阅读，也更容易被 AI 模型识别、拆解与引用。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="whitepaper-bento-column whitepaper-bento-column--side">
+            <article class="whitepaper-bento-card whitepaper-bento-card--square" data-color="blue">
+              <span class="whitepaper-bento-card__glow"></span>
+              <div class="whitepaper-bento-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"></path><path d="M3 12h18"></path></svg>
+              </div>
+              <div class="whitepaper-bento-card__body">
+                <h3>SEO 负责 “广度覆盖”</h3>
+                <p>捕获确定性需求。</p>
+              </div>
+            </article>
+
+            <article class="whitepaper-bento-card whitepaper-bento-card--square" data-color="teal">
+              <span class="whitepaper-bento-card__glow"></span>
+              <div class="whitepaper-bento-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+              </div>
+              <div class="whitepaper-bento-card__body">
+                <h3>让双引擎成为企业增长基因</h3>
+                <p>基础建设、知识图谱、信源分发、优化机制。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="alliance" class="resource-alliance" aria-label="GEO 联盟" data-bg-preview-root>
+      <div class="resource-alliance__timeline-wrap">
+        <header class="resource-alliance__timeline-head" data-reveal>
+          <h2>深度共建 <span class="geo-highlight">GEO</span> 生态，赋能 AI 营销时代</h2>
+          <span>由《国际品牌观察》杂志社与 CGIA 秘书处联合发起成立的行业先锋组织。</span>
+        </header>
+
+        <div class="timeline-list alliance-timeline-list" data-alliance-timeline>
+          <div class="entry active" data-alliance-entry>
+            <div class="meta">
+              <div class="meta-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"></path><path d="M9 12l2 2 4-5"></path></svg>
+              </div>
+              <div>
+                <div class="meta-title">关于联盟</div>
+                <div class="meta-subtitle">行业先锋组织</div>
+              </div>
+            </div>
+            <div class="sentinel"></div>
+            <article class="card">
+              <h3 class="card-title">中国 <span class="geo-highlight">GEO</span> 创新联盟（CGIA）</h3>
+              <p class="card-desc">在生成式 AI 全面重塑搜索生态的时代，品牌的“AI 可见性”已成为企业数字化竞争的核心要素。</p>
+              <div class="expandable">
+                <div class="inner">
+                  <div class="items-box">
+                    <div class="item-row"><span class="item-dot"></span><span>由《国际品牌观察》杂志社与 CGIA 秘书处联合发起成立。</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>汇聚行业头部企业、核心平台方、技术专家与权威学者。</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>打造推动 GEO 技术落地、助力企业数据资产增值与品牌增长的生态共同体。</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="entry" data-alliance-entry>
+            <div class="meta">
+              <div class="meta-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"></path><path d="M3 12h18"></path><path d="m5 5 14 14"></path><path d="m19 5-14 14"></path></svg>
+              </div>
+              <div>
+                <div class="meta-title">核心权益</div>
+                <div class="meta-subtitle">7 大硬核独家权益</div>
+              </div>
+            </div>
+            <div class="sentinel"></div>
+            <article class="card">
+              <h3 class="card-title">会员单位及先锋个人权益</h3>
+              <p class="card-desc">加入 CGIA 创新联盟，会员单位及先锋个人将享有由联盟提供的 7 大硬核独家权益。</p>
+              <div class="expandable">
+                <div class="inner">
+                  <div class="items-box">
+                    <div class="item-row"><span class="item-dot"></span><span>联盟证书与授牌</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>独家技术工具池</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>全媒体矩阵传播</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>GEO 全球周报</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>《国际品牌观察》专栏曝光</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>季度白皮书联合署名发布</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>年度专属线下私享会</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="entry" data-alliance-entry>
+            <div class="meta">
+              <div class="meta-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div>
+                <div class="meta-title">加入条件</div>
+                <div class="meta-subtitle">单位会员 / 先锋个人</div>
+              </div>
+            </div>
+            <div class="sentinel"></div>
+            <article class="card">
+              <h3 class="card-title">我们诚邀以下两类伙伴加入</h3>
+              <p class="card-desc">所有申请入会之单位或个人需通过秘书处的初审，并经联盟正式审批通过。</p>
+              <div class="expandable">
+                <div class="inner">
+                  <div class="items-box">
+                    <div class="item-row"><span class="item-dot"></span><span>单位会员 —— 中国 GEO 创新联盟创始会员单位</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>科技与营销企业</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>品牌方企业</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>合规要求</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>先锋个人 —— 中国 GEO 创新联盟创始会员先锋</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>行业专家</span></div>
+                    <div class="item-row"><span class="item-dot"></span><span>研究热忱</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="resource-faq" aria-label="GEO 常见问题" data-resource-faq data-bg-preview-root>
+      <video class="resource-faq__bg" data-lazy autoplay muted loop playsinline webkit-playsinline preload="none" data-pc-src="./assets/videos/section-6_bg_pc.mp4" data-sp-src="./assets/videos/section-6_bg_sp.mp4">
+        <source src="./assets/videos/section-6_bg_pc.mp4" type="video/mp4">
+      </video>
+      <div class="resource-faq__inner">
+        <header class="resource-faq__head" data-reveal>
+          <h2><span class="geo-highlight">GEO</span> 常见问题</h2>
+        </header>
+
+        <div class="resource-faq__list">
+          <details class="resource-faq__item" open>
+            <summary>
+              <span>什么是 GEO？</span>
+              <i aria-hidden="true"></i>
+            </summary>
+            <div class="resource-faq__answer">
+              <p>即针对生成式AI引擎的内容优化,其核心目标在于使品牌在AI生成的回答中实现"被提及"“被引用"“被推荐"的三重可见性。在传统搜索引擎时代,用户通过输入关键词获取相关网页链接;而在AI时代,生成式Al引擎能够直接生成自然语言回答,为用户提供更为简洁、精准的信息。GEO的作用就是确保品牌信息能够融入这些Al生成的回答中,从而在用户获取信息的第一时间进入其视野,增强品牌的曝光度和影响力。</p>
+            </div>
+          </details>
+
+          <details class="resource-faq__item">
+            <summary>
+              <span>为什么要做 GEO？</span>
+              <i aria-hidden="true"></i>
+            </summary>
+            <div class="resource-faq__answer">
+              <p>生成式 AI 正以革命性力量重塑商业，品牌竞争主战场从“流量入口”转向“认知入口”（世界银行2025年10月报告，ChatGPT 2025年4月月访问量44.6亿次、独立用户5.55亿）。消费者依赖 AI 决策，催生 GEO（AI 搜索优化）需求。GEO 战略能重塑品牌与 AI 共生关系、构建信任资产、实现价值锁定。企业只有开展 GEO 营销动作，才能在技术浪潮中构筑竞争优势，它为品牌提供战略转型方案，是 AI 时代企业布局不可或缺的一环。</p>
+            </div>
+          </details>
+
+          <details class="resource-faq__item">
+            <summary>
+              <span>GEO 与 SEO 有什么区别？</span>
+              <i aria-hidden="true"></i>
+            </summary>
+            <div class="resource-faq__answer">
+              <p>SEO是针对传统搜索引擎(如百度、谷歌)的优化，目标是提升网页在搜索结果页的排名。而GEO是针对生成式AI大模型的优化，目标是让AI在回答用户问题时优先提到您的品牌。两者的优化对象、原理和方法都有很大不同，但可以相互补充，共同提升品牌的线上可见度。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="inner">
+      <div class="mid">
+        <div class="footer-brand" data-animate="">
+          <a class="footer-logo" href="index.html" aria-label="智优康赛">
+            <img src="./assets/images/logo/footer-logo.webp" alt="智优康赛">
+          </a>
+          <p class="footer-tagline">让您的品牌占领 AI 第一推荐位</p>
+          <div class="footer-contact">
+            <p>邮箱：contact@zhiyoukangsai.com</p>
+            <p>电话：400-016-6678</p>
+            <p>地址：北京市朝阳区三丰北里1号楼13层1307</p>
+          </div>
+        </div>
+
+        <nav class="footer-link-col footer-link-col--nav" aria-label="导航" data-animate="">
+          <ul class="footer-link-grid">
+            <li class="footer-link-item">
+              <a class="footer-link-heading" href="solutions.html">GEO 解决方案</a>
+              <ul class="footer-submenu">
+                <li><a href="solutions.html#overview">全方位 GEO</a></li>
+                <li><a href="solutions.html#ai-platforms">主流平台</a></li>
+                <li><a href="solutions.html#strategy">优化策略</a></li>
+                <li><a href="solutions.html#principles">GEO 法则</a></li>
+                <li><a href="solutions.html#results">GEO 成效</a></li>
+              </ul>
+            </li>
+            <li class="footer-link-item">
+              <a class="footer-link-heading" href="demo.html">智优平台</a>
+              <ul class="footer-submenu">
+                <li><a href="demo.html#system">自研系统</a></li>
+                <li><a href="demo.html#abilities">核心能力</a></li>
+                <li><a href="demo.html#advantages">系统优势</a></li>
+                <li><a href="demo.html#empower">系统赋能</a></li>
+              </ul>
+            </li>
+            <li class="footer-link-item">
+              <a class="footer-link-heading" href="cases.html">客户案例</a>
+              <ul class="footer-submenu">
+                <li><a href="cases.html#data">数据案例</a></li>
+                <li><a href="cases.html#testimonials">客户评价</a></li>
+                <li><a href="cases.html#partners">合作伙伴</a></li>
+              </ul>
+            </li>
+            <li class="footer-link-item">
+              <a class="footer-link-heading" href="about.html">关于我们</a>
+              <ul class="footer-submenu">
+                <li><a href="about.html#about">公司介绍</a></li>
+                <li><a href="about.html#endorsement">行业背书</a></li>
+                <li><a href="about.html#business">核心业务</a></li>
+                <li><a href="about.html#authority">权威展示</a></li>
+              </ul>
+            </li>
+            <li class="footer-link-item">
+              <a class="footer-link-heading" href="services.html">资源中心</a>
+              <ul class="footer-submenu">
+                <li><a href="services.html#whitepaper">GEO 白皮书</a></li>
+                <li><a href="services.html#alliance">GEO 联盟</a></li>
+                <li><a href="services.html#faq">GEO 常见问题</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="maBox" data-animate="">
+          <div class="footer-qr-card">
+            <div class="footer-qr-box">
+              <img src="./assets/images/download/code.webp" alt="微信公众号二维码" width="598" height="600">
+            </div>
+            <h3>关注我们</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="btm">
+        <div class="footer-btm-left">
+          <span>© 2026 智优康赛科技有限公司</span>
+          <span>·</span>
+          <a href="#">京ICP备XXXXXXXX号</a>
+          <span>·</span>
+          <a href="#">京公网安备XXXXXXXX号</a>
+        </div>
+        <div class="footer-btm-right">
+          <a href="#">隐私政策</a>
+          <span class="footer-divider"></span>
+          <a href="#">法律声明</a>
+        </div>
+      </div>
+    </div>
+    <button class="footer-to-top" type="button" aria-label="回到顶部">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+  </footer>
+
+  <script src="./assets/vendor/lenis.min.js"></script>
+  <script src="./assets/js/lenis-init.js?v=safari-1"></script>
+  <script src="./components/liquid-glass/liquid-glass.js"></script>
+  <script src="./assets/js/common.js"></script>
+  <script src="./assets/js/site-init.js"></script>
+  <script src="./assets/js/header.js?v=nav-jelly-2"></script>
+  <script src="./assets/js/reveal.js"></script>
+  <script src="./assets/js/services.js?v=resource-center-39"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "智优康赛" [ref=e6] [cursor=pointer]:
+        - /url: "#/"
+        - img "智优康赛" [ref=e7]
+      - button [ref=e8] [cursor=pointer]
+    - generic [ref=e13]:
+      - navigation [ref=e14]:
+        - generic [ref=e16] [cursor=pointer]: 首页
+        - generic [ref=e17]:
+          - generic [ref=e18] [cursor=pointer]:
+            - text: 解决方案
+            - img [ref=e19]
+          - generic:
+            - generic [ref=e21] [cursor=pointer]: 全方位 GEO
+            - generic [ref=e22] [cursor=pointer]: 主流平台优化
+            - generic [ref=e23] [cursor=pointer]: AI 搜索优化策略
+            - generic [ref=e24] [cursor=pointer]: GEO 法则
+            - generic [ref=e25] [cursor=pointer]: GEO 成效
+        - generic [ref=e26]:
+          - generic [ref=e27] [cursor=pointer]:
+            - text: 客户案例
+            - img [ref=e28]
+          - generic:
+            - generic [ref=e30] [cursor=pointer]: 数据案例
+            - generic [ref=e31] [cursor=pointer]: 客户评价
+            - generic [ref=e32] [cursor=pointer]: 合作伙伴
+        - generic [ref=e33]:
+          - generic [ref=e34] [cursor=pointer]:
+            - text: 智优平台
+            - img [ref=e35]
+          - generic:
+            - generic [ref=e37] [cursor=pointer]: 智优系统
+            - generic [ref=e38] [cursor=pointer]: 核心能力
+            - generic [ref=e39] [cursor=pointer]: 系统优势
+            - generic [ref=e40] [cursor=pointer]: 系统赋能
+        - generic [ref=e41]:
+          - generic [ref=e42] [cursor=pointer]:
+            - text: 关于我们
+            - img [ref=e43]
+          - generic:
+            - generic [ref=e45] [cursor=pointer]: 公司介绍
+            - generic [ref=e46] [cursor=pointer]: 行业背书
+            - generic [ref=e47] [cursor=pointer]: 核心业务
+            - generic [ref=e48] [cursor=pointer]: 权威展示
+        - generic [ref=e49]:
+          - generic [ref=e50] [cursor=pointer]:
+            - text: 资源中心
+            - img [ref=e51]
+          - generic:
+            - generic [ref=e53] [cursor=pointer]: GEO 白皮书
+            - generic [ref=e54] [cursor=pointer]: GEO 联盟
+            - generic [ref=e55] [cursor=pointer]: GEO 常见问题
+        - button "预约诊断" [ref=e56] [cursor=pointer]
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: 耐特康赛（母公司）
+          - generic [ref=e60]: 耐特康赛网络技术（北京）有限公司 | netconcepts.cn
+        - generic [ref=e61]:
+          - generic [ref=e62]: 智优康赛（子公司）
+          - generic [ref=e63]: 北京智优康赛科技有限公司 | GEO业务独立运营
+        - generic [ref=e64]:
+          - generic [ref=e65]: 总部
+          - generic [ref=e66]: 中国
+        - generic [ref=e67]: 商务合作：欢迎垂询，共同探索AI搜索时代的品牌增长路径
+  - main [ref=e68]:
+    - generic [ref=e687]:
+      - generic [ref=e692]:
+        - img "智优康赛" [ref=e693]
+        - paragraph [ref=e695]:
+          - generic [ref=e696]: 资源中心
+      - generic [ref=e697]:
+        - generic [ref=e700]:
+          - paragraph [ref=e701]:
+            - generic [ref=e702]: GEO白皮书
+          - paragraph [ref=e703]:
+            - generic [ref=e704]: 深度洞察生成式引擎优化方法论，助力品牌AI搜索增长
+        - generic [ref=e706]:
+          - generic [ref=e707]:
+            - paragraph [ref=e708]:
+              - generic [ref=e709]: GEO权威指南
+            - paragraph [ref=e710]:
+              - generic [ref=e711]: 从理论到实践，系统化掌握生成式引擎优化的核心方法论。白皮书涵盖GEO诊断框架、AI平台优化策略、内容适配技术与竞品对标方法，为企业提供可落地的GEO优化路径。
+            - generic [ref=e712]:
+              - generic [ref=e713]:
+                - img
+                - generic [ref=e715]:
+                  - img [ref=e716]
+                  - generic [ref=e718]: GEO诊断评估体系
+              - generic [ref=e719]:
+                - img
+                - generic [ref=e721]:
+                  - img [ref=e722]
+                  - generic [ref=e724]: 7大AI平台优化策略
+              - generic [ref=e725]:
+                - img
+                - generic [ref=e727]:
+                  - img [ref=e728]
+                  - generic [ref=e730]: 品牌AI可见度提升路径
+              - generic [ref=e731]:
+                - img
+                - generic [ref=e733]:
+                  - img [ref=e734]
+                  - generic [ref=e736]: 行业案例与数据洞察
+          - generic [ref=e737]:
+            - generic [ref=e738]:
+              - figure [ref=e739]:
+                - img "GEO白皮书" [ref=e741]
+              - generic [ref=e742]:
+                - generic [ref=e743]: GEO白皮书
+                - generic [ref=e744]: 生成式引擎优化（GEO）全面指南
+            - generic [ref=e745]:
+              - figure [ref=e746]:
+                - img "GEO实战手册" [ref=e748]
+              - generic [ref=e749]:
+                - generic [ref=e750]: GEO实战手册
+                - generic [ref=e751]: 品牌AI搜索优化的落地方法论
+      - generic [ref=e752]:
+        - generic [ref=e755]:
+          - paragraph [ref=e756]:
+            - generic [ref=e757]: GEO创新联盟
+          - paragraph [ref=e758]:
+            - generic [ref=e759]: 中国GEO创新联盟（CGIA），汇聚行业力量，共建AI搜索新生态
+        - generic [ref=e761]:
+          - paragraph [ref=e763]:
+            - generic [ref=e764]: 中国GEO创新联盟（China
+            - generic [ref=e765]: GEO
+            - generic [ref=e766]: Innovation
+            - generic [ref=e767]: Alliance，简称CGIA）是由智优康赛联合行业权威机构共同发起的GEO行业组织，致力于推动生成式引擎优化标准的建立与普及，助力品牌在AI搜索时代实现增长突破。
+          - generic [ref=e768]:
+            - generic [ref=e770]:
+              - img
+              - generic [ref=e771]:
+                - generic [ref=e772]: 🏆
+                - paragraph [ref=e773]:
+                  - generic [ref=e774]: 证书授牌
+                - paragraph [ref=e775]:
+                  - generic [ref=e776]: 获得中国GEO创新联盟官方认证证书，彰显行业权威地位
+            - generic [ref=e778]:
+              - img
+              - generic [ref=e779]:
+                - generic [ref=e780]: 🔧
+                - paragraph [ref=e781]:
+                  - generic [ref=e782]: 技术工具
+                - paragraph [ref=e783]:
+                  - generic [ref=e784]: 优先使用联盟GEO技术工具平台，提升优化效率
+            - generic [ref=e786]:
+              - img
+              - generic [ref=e787]:
+                - generic [ref=e788]: 📢
+                - paragraph [ref=e789]:
+                  - generic [ref=e790]: 媒体传播
+                - paragraph [ref=e791]:
+                  - generic [ref=e792]: 联盟媒体矩阵优先传播报道，扩大品牌声量
+            - generic [ref=e794]:
+              - img
+              - generic [ref=e795]:
+                - generic [ref=e796]: 📊
+                - paragraph [ref=e797]:
+                  - generic [ref=e798]: GEO周报
+                - paragraph [ref=e799]:
+                  - generic [ref=e800]: 每周获取行业GEO趋势洞察报告，把握最新动态
+            - generic [ref=e802]:
+              - img
+              - generic [ref=e803]:
+                - generic [ref=e804]: ✍️
+                - paragraph [ref=e805]:
+                  - generic [ref=e806]: 专栏曝光
+                - paragraph [ref=e807]:
+                  - generic [ref=e808]: 联盟官方专栏优先展示企业品牌内容
+            - generic [ref=e810]:
+              - img
+              - generic [ref=e811]:
+                - generic [ref=e812]: 📖
+                - paragraph [ref=e813]:
+                  - generic [ref=e814]: 白皮书
+                - paragraph [ref=e815]:
+                  - generic [ref=e816]: 优先参与联盟年度白皮书编撰，树立行业标杆
+            - generic [ref=e818]:
+              - img
+              - generic [ref=e819]:
+                - generic [ref=e820]: 🤝
+                - paragraph [ref=e821]:
+                  - generic [ref=e822]: 私享会
+                - paragraph [ref=e823]:
+                  - generic [ref=e824]: 定期参加联盟高端私享会，链接行业核心资源
+          - generic [ref=e826]:
+            - img
+            - generic [ref=e828]:
+              - generic [ref=e829]:
+                - paragraph [ref=e830]:
+                  - generic [ref=e831]: 加入GEO创新联盟
+                - generic [ref=e832]:
+                  - generic [ref=e833]:
+                    - generic [ref=e834]: 单位会员
+                    - generic [ref=e835]: 企业及机构均可申请加入，共享联盟资源
+                  - generic [ref=e836]:
+                    - generic [ref=e837]: 先锋会员
+                    - generic [ref=e838]: 行业领军企业专属，深度参与联盟治理与标准制定
+                - paragraph [ref=e839]:
+                  - generic [ref=e840]: 扫描右侧二维码，即刻申请加入
+              - generic [ref=e842]:
+                - img "加入GEO创新联盟" [ref=e843]
+                - generic [ref=e844]: 扫码加入联盟
+      - generic [ref=e845]:
+        - generic [ref=e848]:
+          - paragraph [ref=e849]:
+            - generic [ref=e850]: GEO常见问题
+          - paragraph [ref=e851]:
+            - generic [ref=e852]: 关于GEO优化，你可能想了解这些
+        - generic [ref=e854]:
+          - generic [ref=e855]:
+            - button "Q 什么是GEO？" [ref=e856] [cursor=pointer]:
+              - generic [ref=e857]: Q
+              - paragraph [ref=e858]:
+                - generic [ref=e859]: 什么是GEO？
+              - img [ref=e860]
+            - generic [ref=e862]:
+              - generic [ref=e863]: A
+              - paragraph [ref=e864]:
+                - generic [ref=e865]: GEO（Generative
+                - generic [ref=e866]: Engine
+                - generic [ref=e867]: Optimization，生成式引擎优化）是指针对生成式AI搜索引擎（如ChatGPT、Kimi、DeepSeek、豆包等）的内容优化策略。其核心目标是让品牌在AI搜索结果中实现"被提及""被引用""被推荐"，从而在AI搜索时代获得竞争优势。
+          - generic [ref=e868]:
+            - button "Q 为什么要做GEO？" [ref=e869] [cursor=pointer]:
+              - generic [ref=e870]: Q
+              - paragraph [ref=e871]:
+                - generic [ref=e872]: 为什么要做GEO？
+              - img [ref=e873]
+            - generic [ref=e875]:
+              - generic [ref=e876]: A
+              - paragraph [ref=e877]:
+                - generic [ref=e878]: 随着生成式AI的普及，用户的搜索习惯正在从传统搜索引擎向AI搜索转移。品牌竞争的焦点已从流量入口转向认知入口——如果品牌在AI搜索中不可见，就等于在未来的数字世界中"不存在"。GEO帮助品牌抢占AI搜索的认知高地，确保在AI推荐中被优先提及。
+          - generic [ref=e879]:
+            - button "Q GEO与SEO有什么区别？" [ref=e880] [cursor=pointer]:
+              - generic [ref=e881]: Q
+              - paragraph [ref=e882]:
+                - generic [ref=e883]: GEO与SEO有什么区别？
+              - img [ref=e884]
+            - generic [ref=e886]:
+              - generic [ref=e887]: A
+              - paragraph [ref=e888]:
+                - generic [ref=e889]: SEO（搜索引擎优化）针对的是传统搜索引擎（如Google、百度）的排名算法，核心是关键词排名和页面权重；而GEO针对的是AI大模型的生成逻辑，核心是让品牌成为AI回答中的"权威引用源"。简单来说，SEO是让网页排在搜索结果前列，GEO是让品牌成为AI回答的一部分。两者互补，但GEO是面向未来的优化方向。
+  - contentinfo [ref=e641]:
+    - generic [ref=e643]:
+      - generic [ref=e644]:
+        - img "智优康赛" [ref=e645]
+        - paragraph [ref=e646]: AI搜索时代的品牌全球化战略伙伴，让AI主动推荐你的品牌。
+        - generic [ref=e647]:
+          - img "微信二维码" [ref=e648]
+          - generic [ref=e649]: 关注公众号
+      - generic [ref=e650]:
+        - heading "解决方案" [level=4] [ref=e651] [cursor=pointer]
+        - list [ref=e652]:
+          - listitem [ref=e653]: 全方位GEO
+          - listitem [ref=e654]: 主流平台
+          - listitem [ref=e655]: 优化策略
+          - listitem [ref=e656]: GEO法则
+          - listitem [ref=e657]: GEO成效
+      - generic [ref=e658]:
+        - heading "客户案例" [level=4] [ref=e659] [cursor=pointer]
+        - list [ref=e660]:
+          - listitem [ref=e661]: 成效数据
+          - listitem [ref=e662]: 客户评价
+          - listitem [ref=e663]: 合作伙伴
+      - generic [ref=e664]:
+        - heading "智优平台" [level=4] [ref=e665] [cursor=pointer]
+        - list [ref=e666]:
+          - listitem [ref=e667]: 智优系统
+          - listitem [ref=e668]: 核心能力
+          - listitem [ref=e669]: 系统优势
+          - listitem [ref=e670]: 系统赋能
+      - generic [ref=e671]:
+        - heading "资源中心" [level=4] [ref=e672] [cursor=pointer]
+        - list [ref=e673]:
+          - listitem [ref=e674]: GEO白皮书
+          - listitem [ref=e675]: GEO联盟
+          - listitem [ref=e676]: GEO常见问题
+      - generic [ref=e677]:
+        - heading "关于我们" [level=4] [ref=e678] [cursor=pointer]
+        - list [ref=e679]:
+          - listitem [ref=e680]: 公司介绍
+          - listitem [ref=e681]: 行业背书
+          - listitem [ref=e682]: 核心业务
+          - listitem [ref=e683]: 权威认证
+    - paragraph [ref=e686]: 智优康赛. All rights reserved.

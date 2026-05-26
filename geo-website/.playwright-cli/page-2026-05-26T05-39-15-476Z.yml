@@ -1,0 +1,128 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "智优康赛" [ref=e6] [cursor=pointer]:
+        - /url: "#/"
+        - img "智优康赛" [ref=e7]
+      - navigation [ref=e8]:
+        - link "首页" [ref=e10] [cursor=pointer]:
+          - /url: "#/"
+        - generic [ref=e12] [cursor=pointer]:
+          - text: 解决方案
+          - img [ref=e13]
+        - generic [ref=e16] [cursor=pointer]:
+          - text: 客户案例
+          - img [ref=e17]
+        - generic [ref=e20] [cursor=pointer]:
+          - text: 智优平台
+          - img [ref=e21]
+        - generic [ref=e24] [cursor=pointer]:
+          - text: 关于我们
+          - img [ref=e25]
+        - generic [ref=e28] [cursor=pointer]:
+          - text: 资源中心
+          - img [ref=e29]
+      - button "预约诊断" [ref=e32] [cursor=pointer]
+    - generic [ref=e33]:
+      - navigation [ref=e34]:
+        - generic [ref=e36] [cursor=pointer]: 首页
+        - generic [ref=e37]:
+          - generic [ref=e38] [cursor=pointer]:
+            - text: 解决方案
+            - img [ref=e39]
+          - generic:
+            - generic [ref=e41] [cursor=pointer]: 全方位 GEO
+            - generic [ref=e42] [cursor=pointer]: 主流平台优化
+            - generic [ref=e43] [cursor=pointer]: AI 搜索优化策略
+            - generic [ref=e44] [cursor=pointer]: GEO 法则
+            - generic [ref=e45] [cursor=pointer]: GEO 成效
+        - generic [ref=e46]:
+          - generic [ref=e47] [cursor=pointer]:
+            - text: 客户案例
+            - img [ref=e48]
+          - generic:
+            - generic [ref=e50] [cursor=pointer]: 数据案例
+            - generic [ref=e51] [cursor=pointer]: 客户评价
+            - generic [ref=e52] [cursor=pointer]: 合作伙伴
+        - generic [ref=e53]:
+          - generic [ref=e54] [cursor=pointer]:
+            - text: 智优平台
+            - img [ref=e55]
+          - generic:
+            - generic [ref=e57] [cursor=pointer]: 智优系统
+            - generic [ref=e58] [cursor=pointer]: 核心能力
+            - generic [ref=e59] [cursor=pointer]: 系统优势
+            - generic [ref=e60] [cursor=pointer]: 系统赋能
+        - generic [ref=e61]:
+          - generic [ref=e62] [cursor=pointer]:
+            - text: 关于我们
+            - img [ref=e63]
+          - generic:
+            - generic [ref=e65] [cursor=pointer]: 公司介绍
+            - generic [ref=e66] [cursor=pointer]: 行业背书
+            - generic [ref=e67] [cursor=pointer]: 核心业务
+            - generic [ref=e68] [cursor=pointer]: 权威展示
+        - generic [ref=e69]:
+          - generic [ref=e70] [cursor=pointer]:
+            - text: 资源中心
+            - img [ref=e71]
+          - generic:
+            - generic [ref=e73] [cursor=pointer]: GEO 白皮书
+            - generic [ref=e74] [cursor=pointer]: GEO 联盟
+            - generic [ref=e75] [cursor=pointer]: GEO 常见问题
+        - button "预约诊断" [ref=e76] [cursor=pointer]
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e79]: 耐特康赛（母公司）
+          - generic [ref=e80]: 耐特康赛网络技术（北京）有限公司 | netconcepts.cn
+        - generic [ref=e81]:
+          - generic [ref=e82]: 智优康赛（子公司）
+          - generic [ref=e83]: 北京智优康赛科技有限公司 | GEO业务独立运营
+        - generic [ref=e84]:
+          - generic [ref=e85]: 总部
+          - generic [ref=e86]: 中国
+        - generic [ref=e87]: 商务合作：欢迎垂询，共同探索AI搜索时代的品牌增长路径
+  - main [ref=e88]
+  - contentinfo [ref=e89]:
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - img "智优康赛" [ref=e93]
+        - paragraph [ref=e94]: AI搜索时代的品牌全球化战略伙伴，让AI主动推荐你的品牌。
+        - generic [ref=e95]:
+          - img "微信二维码" [ref=e96]
+          - generic [ref=e97]: 关注公众号
+      - generic [ref=e98]:
+        - heading "解决方案" [level=4] [ref=e99] [cursor=pointer]
+        - list [ref=e100]:
+          - listitem [ref=e101]: 全方位GEO
+          - listitem [ref=e102]: 主流平台
+          - listitem [ref=e103]: 优化策略
+          - listitem [ref=e104]: GEO法则
+          - listitem [ref=e105]: GEO成效
+      - generic [ref=e106]:
+        - heading "客户案例" [level=4] [ref=e107] [cursor=pointer]
+        - list [ref=e108]:
+          - listitem [ref=e109]: 成效数据
+          - listitem [ref=e110]: 客户评价
+          - listitem [ref=e111]: 合作伙伴
+      - generic [ref=e112]:
+        - heading "智优平台" [level=4] [ref=e113] [cursor=pointer]
+        - list [ref=e114]:
+          - listitem [ref=e115]: 智优系统
+          - listitem [ref=e116]: 核心能力
+          - listitem [ref=e117]: 系统优势
+          - listitem [ref=e118]: 系统赋能
+      - generic [ref=e119]:
+        - heading "资源中心" [level=4] [ref=e120] [cursor=pointer]
+        - list [ref=e121]:
+          - listitem [ref=e122]: GEO白皮书
+          - listitem [ref=e123]: GEO联盟
+          - listitem [ref=e124]: GEO常见问题
+      - generic [ref=e125]:
+        - heading "关于我们" [level=4] [ref=e126] [cursor=pointer]
+        - list [ref=e127]:
+          - listitem [ref=e128]: 公司介绍
+          - listitem [ref=e129]: 行业背书
+          - listitem [ref=e130]: 核心业务
+          - listitem [ref=e131]: 权威认证
+    - paragraph [ref=e134]: 智优康赛. All rights reserved.

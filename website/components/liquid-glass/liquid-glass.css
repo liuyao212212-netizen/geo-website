@@ -1,0 +1,422 @@
+/* ============================================================
+   Liquid Glass Components — Apple iOS 26 风
+   ============================================================
+   - 苹果风毛玻璃 / 液态玻璃按钮 & 标签
+   - 鼠标悬停时液态填充（鼠标位置追踪 + 高斯填充）
+   - 同一套组件类支持 dark / light 主题
+   ============================================================ */
+
+/* ---------- 主题背景（仅展示页用，复用时替换即可） ---------- */
+
+.lg-stage {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI", "PingFang SC", "Hiragino Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 深色主题：电影感冷暖渐变背景 */
+.lg-stage--dark {
+  background:
+    radial-gradient(ellipse 60% 50% at 75% 65%, #6b5a3a 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 20% 30%, #2a3a55 0%, transparent 60%),
+    linear-gradient(160deg, #0f1218 0%, #1a1f28 100%);
+  color: #fff;
+}
+
+/* 浅色主题：柔和米杏 + 一抹冷色，有折射素材但素雅 */
+.lg-stage--light {
+  background:
+    radial-gradient(ellipse 60% 50% at 78% 70%, #f0d9b8 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 18% 28%, #d8dce8 0%, transparent 60%),
+    linear-gradient(160deg, #f5f2ec 0%, #ebe7df 100%);
+  color: #1a1a1f;
+}
+
+.lg-stage > * { position: relative; z-index: 1; }
+
+/* ---------- 展示页排版 ---------- */
+
+.lg-section { display: flex; flex-direction: column; gap: 28px; }
+.lg-section__label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin: 0;
+}
+.lg-section__title {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.lg-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+/* ============================================================
+   核心组件：.lg-btn / .lg-tag
+   ============================================================ */
+
+/* ---- 通用基底（鼠标位置自定义属性） ---- */
+.lg-btn,
+.lg-tag,
+.lg-card,
+.lg-logo-card {
+  --mx: 50%;
+  --my: 50%;
+  --fill: 0;            /* 悬停填充强度 0~1 */
+  --press: 1;           /* 按下缩放 */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  isolation: isolate;
+  cursor: pointer;
+  user-select: none;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  transform: scale(var(--press));
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    color 0.3s ease;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  overflow: hidden;
+}
+
+/* 共有伪元素：
+   ::before = 液态填充层（跟随鼠标 + hover 强度）
+   ::after  = 顶部高光 + 内描边（specular highlight）
+*/
+.lg-btn::before,
+.lg-tag::before,
+.lg-card::before,
+.lg-logo-card::before,
+.lg-btn::after,
+.lg-tag::after,
+.lg-card::after,
+.lg-logo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.lg-btn::before,
+.lg-tag::before,
+.lg-card::before,
+.lg-logo-card::before {
+  background: radial-gradient(
+    140px circle at var(--mx) var(--my),
+    var(--lg-fill-color, rgba(255,255,255,0.9)) 0%,
+    var(--lg-fill-color-2, rgba(255,255,255,0.4)) 35%,
+    transparent 75%
+  );
+  opacity: var(--fill);
+  transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: -1;
+  mix-blend-mode: var(--lg-fill-blend, screen);
+}
+.lg-btn::after,
+.lg-tag::after,
+.lg-card::after,
+.lg-logo-card::after {
+  /* 外凸 + 内凹 + 静态光边
+     ────────────────────────────
+     1) 全圈薄光边（静态，不跟鼠标）
+     2) 顶部加粗光边（光源从上方）
+     3) 边缘向内投影 → 中间比边缘低（内凹台阶感）
+  */
+  background: none;
+  box-shadow:
+    /* —— 内凹台阶（无光边） —— */
+    /* 顶边向内投影：模拟"凸起边缘"对中央的遮挡 */
+    inset 0 7px 10px -7px var(--lg-recess-top, rgba(0,0,0,0.28)),
+    /* 左右两侧向内的淡投影 */
+    inset 7px 0 10px -8px var(--lg-recess-side, rgba(0,0,0,0.16)),
+    inset -7px 0 10px -8px var(--lg-recess-side, rgba(0,0,0,0.16)),
+    /* 底边向内淡反光：中央底部稍微亮一点 */
+    inset 0 -7px 10px -7px var(--lg-recess-bot, rgba(255,255,255,0.12));
+  z-index: 0;
+}
+.lg-btn > *,
+.lg-tag > *,
+.lg-card > *,
+.lg-logo-card > * { position: relative; z-index: 1; }
+
+/* ---- 按钮：尺寸 ---- */
+.lg-btn {
+  padding: 14px 26px;
+  font-size: 15px;
+  border-radius: 999px;
+  min-height: 48px;
+}
+.lg-btn--sm {
+  padding: 10px 18px;
+  font-size: 13px;
+  min-height: 38px;
+}
+.lg-btn--lg {
+  padding: 18px 34px;
+  font-size: 17px;
+  min-height: 58px;
+}
+
+/* ---- 标签：尺寸 ---- */
+.lg-tag {
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  min-height: 32px;
+  font-weight: 500;
+}
+.lg-tag--sm {
+  padding: 5px 11px;
+  font-size: 11.5px;
+  min-height: 24px;
+  letter-spacing: 0.01em;
+}
+
+/* ---- 状态：悬停 / 按下 ---- */
+.lg-btn:hover,
+.lg-tag:hover,
+.lg-card:hover,
+.lg-logo-card:hover { --fill: 1; }
+.lg-btn:active,
+.lg-tag:active,
+.lg-card:active,
+.lg-logo-card:active { --press: 0.99; }
+
+/* ---- 卡片：参考图大尺寸 pill ---- */
+.lg-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  padding: 28px 36px;
+  min-width: 280px;
+  min-height: 120px;
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+}
+.lg-card__kicker {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.lg-card__title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Logo 墙和跑马灯专用，保留矩形比例，不继承 pill 卡片形态。 */
+.lg-logo-card {
+  min-width: 0;
+  min-height: 0;
+  padding: 18px 28px;
+  border-radius: 24px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.lg-logo-card img,
+.lg-logo-card svg {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: block;
+}
+
+.lg-logo-card__name {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   主题变量
+   ============================================================ */
+
+/* ---------- 深色主题：白调玻璃（外凸+内凹） ---------- */
+.lg-stage--dark .lg-btn,
+.lg-stage--dark .lg-tag,
+.lg-stage--dark .lg-card,
+.lg-stage--dark .lg-logo-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: transparent;
+  color: #fff;
+  /* 外凸阴影 */
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.18);
+  --lg-fill-color: rgba(255, 255, 255, 0.95);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.35);
+  --lg-fill-blend: overlay;
+  /* 静态光边 */
+  --lg-rim-all: rgba(255, 255, 255, 0.22);
+  --lg-rim-tl: rgba(255, 255, 255, 0.6);
+  --lg-rim-br: rgba(255, 255, 255, 0.18);
+  /* 内凹台阶 */
+  --lg-recess-top: rgba(0, 0, 0, 0.32);
+  --lg-recess-side: rgba(0, 0, 0, 0.18);
+  --lg-recess-bot: rgba(255, 255, 255, 0.14);
+}
+/* hover 时不动光边，只让外阴影稍微抬一点 */
+.lg-stage--dark .lg-btn:hover,
+.lg-stage--dark .lg-tag:hover,
+.lg-stage--dark .lg-card:hover,
+.lg-stage--dark .lg-logo-card:hover {
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 深色 · primary 强调（白色填实） */
+.lg-stage--dark .lg-btn--primary {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0a0a14;
+  border-color: rgba(255, 255, 255, 0.6);
+  --lg-fill-color: rgba(120, 180, 255, 1);
+  --lg-fill-color-2: rgba(180, 130, 255, 0.6);
+  --lg-fill-blend: normal;
+  --lg-spec-top: rgba(255, 255, 255, 0.5);
+}
+.lg-stage--dark .lg-btn--primary:hover { color: #fff; }
+
+/* 深色 · 强调色标签（带彩色玻璃） */
+.lg-stage--dark .lg-tag--accent {
+  background: rgba(100, 160, 255, 0.18);
+  border-color: rgba(140, 180, 255, 0.4);
+  color: #c8ddff;
+  --lg-fill-color: rgba(140, 180, 255, 0.9);
+  --lg-fill-color-2: rgba(200, 150, 255, 0.4);
+}
+
+/* ---------- 浅色主题：淡白玻璃（外凸+内凹） ---------- */
+.lg-stage--light .lg-btn,
+.lg-stage--light .lg-tag,
+.lg-stage--light .lg-card,
+.lg-stage--light .lg-logo-card {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: transparent;
+  color: #1a1a1f;
+  /* 外凸阴影 */
+  box-shadow:
+    0 10px 24px rgba(40, 30, 20, 0.1),
+    0 2px 6px rgba(40, 30, 20, 0.06);
+  --lg-fill-color: rgba(255, 255, 255, 1);
+  --lg-fill-color-2: rgba(255, 235, 210, 0.6);
+  --lg-fill-blend: normal;
+  /* 静态光边 */
+  --lg-rim-all: rgba(255, 255, 255, 0.55);
+  --lg-rim-tl: rgba(255, 255, 255, 0.95);
+  --lg-rim-br: rgba(255, 255, 255, 0.4);
+  /* 内凹台阶 */
+  --lg-recess-top: rgba(40, 30, 20, 0.16);
+  --lg-recess-side: rgba(40, 30, 20, 0.08);
+  --lg-recess-bot: rgba(255, 255, 255, 0.35);
+}
+.lg-stage--light .lg-btn:hover,
+.lg-stage--light .lg-tag:hover,
+.lg-stage--light .lg-card:hover,
+.lg-stage--light .lg-logo-card:hover {
+  box-shadow:
+    0 14px 32px rgba(40, 30, 20, 0.14),
+    0 2px 6px rgba(40, 30, 20, 0.08);
+}
+
+/* 浅色 · primary 强调（深色填实） */
+.lg-stage--light .lg-btn--primary {
+  background: rgba(20, 20, 25, 0.92);
+  color: #fff;
+  border-color: rgba(20, 20, 25, 0.4);
+  --lg-fill-color: rgba(80, 110, 255, 1);
+  --lg-fill-color-2: rgba(255, 110, 180, 0.6);
+  --lg-fill-blend: normal;
+  --lg-spec-top: rgba(255, 255, 255, 0.18);
+  --lg-inner-top: rgba(255, 255, 255, 0.2);
+  --lg-inner-bot: rgba(0, 0, 0, 0.2);
+}
+.lg-stage--light .lg-btn--primary:hover { color: #fff; }
+
+/* 浅色 · 强调色标签 */
+.lg-stage--light .lg-tag--accent {
+  background: rgba(80, 110, 255, 0.12);
+  border-color: rgba(80, 110, 255, 0.3);
+  color: #2a3a8a;
+  --lg-fill-color: rgba(120, 150, 255, 0.9);
+  --lg-fill-color-2: rgba(255, 150, 200, 0.5);
+}
+
+/* ============================================================
+   小细节：图标 dot / 关闭按钮
+   ============================================================ */
+.lg-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.lg-tag__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-left: 2px;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.lg-tag:hover .lg-tag__close { opacity: 1; }
+.lg-tag__close svg { width: 100%; height: 100%; display: block; }
+
+/* ============================================================
+   响应式：Safari/iOS 优先（≤768）
+   ============================================================ */
+@media (max-width: 768px) {
+  .lg-stage { padding: 56px 24px; gap: 48px; }
+  .lg-section__title { font-size: 28px; }
+  .lg-btn { padding: 12px 22px; font-size: 14px; min-height: 44px; }
+  .lg-btn--lg { padding: 16px 28px; font-size: 16px; min-height: 52px; }
+  .lg-logo-card { padding: 14px 20px; border-radius: 18px; gap: 12px; }
+}
+
+/* 不支持 backdrop-filter 的降级（基本只剩老 Firefox） */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .lg-stage--dark .lg-btn,
+  .lg-stage--dark .lg-tag,
+  .lg-stage--dark .lg-logo-card { background: rgba(40, 40, 60, 0.85); }
+  .lg-stage--light .lg-btn,
+  .lg-stage--light .lg-tag,
+  .lg-stage--light .lg-logo-card { background: rgba(255, 255, 255, 0.85); }
+}

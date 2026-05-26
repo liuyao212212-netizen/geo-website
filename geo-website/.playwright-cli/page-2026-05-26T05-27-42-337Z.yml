@@ -1,0 +1,537 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "智优康赛" [ref=e6] [cursor=pointer]:
+        - /url: "#/"
+        - img "智优康赛" [ref=e7]
+      - button [expanded] [ref=e8] [cursor=pointer]
+    - generic [ref=e13]:
+      - navigation [ref=e14]:
+        - generic [ref=e16] [cursor=pointer]: 首页
+        - generic [ref=e17]:
+          - generic [ref=e18] [cursor=pointer]:
+            - text: 解决方案
+            - img [ref=e19]
+          - generic:
+            - generic [ref=e21] [cursor=pointer]: 全方位 GEO
+            - generic [ref=e22] [cursor=pointer]: 主流平台优化
+            - generic [ref=e23] [cursor=pointer]: AI 搜索优化策略
+            - generic [ref=e24] [cursor=pointer]: GEO 法则
+            - generic [ref=e25] [cursor=pointer]: GEO 成效
+        - generic [ref=e26]:
+          - generic [ref=e27] [cursor=pointer]:
+            - text: 客户案例
+            - img [ref=e28]
+          - generic:
+            - generic [ref=e30] [cursor=pointer]: 数据案例
+            - generic [ref=e31] [cursor=pointer]: 客户评价
+            - generic [ref=e32] [cursor=pointer]: 合作伙伴
+        - generic [ref=e33]:
+          - generic [ref=e34] [cursor=pointer]:
+            - text: 智优平台
+            - img [ref=e35]
+          - generic:
+            - generic [ref=e37] [cursor=pointer]: 智优系统
+            - generic [ref=e38] [cursor=pointer]: 核心能力
+            - generic [ref=e39] [cursor=pointer]: 系统优势
+            - generic [ref=e40] [cursor=pointer]: 系统赋能
+        - generic [ref=e41]:
+          - generic [ref=e42] [cursor=pointer]:
+            - text: 关于我们
+            - img [ref=e43]
+          - generic:
+            - generic [ref=e45] [cursor=pointer]: 公司介绍
+            - generic [ref=e46] [cursor=pointer]: 行业背书
+            - generic [ref=e47] [cursor=pointer]: 核心业务
+            - generic [ref=e48] [cursor=pointer]: 权威展示
+        - generic [ref=e49]:
+          - generic [ref=e50] [cursor=pointer]:
+            - text: 资源中心
+            - img [ref=e51]
+          - generic:
+            - generic [ref=e53] [cursor=pointer]: GEO 白皮书
+            - generic [ref=e54] [cursor=pointer]: GEO 联盟
+            - generic [ref=e55] [cursor=pointer]: GEO 常见问题
+        - button "预约诊断" [ref=e56] [cursor=pointer]
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: 耐特康赛（母公司）
+          - generic [ref=e60]: 耐特康赛网络技术（北京）有限公司 | netconcepts.cn
+        - generic [ref=e61]:
+          - generic [ref=e62]: 智优康赛（子公司）
+          - generic [ref=e63]: 北京智优康赛科技有限公司 | GEO业务独立运营
+        - generic [ref=e64]:
+          - generic [ref=e65]: 总部
+          - generic [ref=e66]: 中国
+        - generic [ref=e67]: 商务合作：欢迎垂询，共同探索AI搜索时代的品牌增长路径
+  - main [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - text: 让
+              - generic [ref=e77]: AI
+              - text: 赋能
+              - text: 品牌全球增长
+            - generic [ref=e78]: AI搜索时代的品牌全球化战略伙伴
+            - generic [ref=e83]:
+              - textbox "搜索您的品牌在AI中的表现..." [ref=e84]
+              - img [ref=e86] [cursor=pointer]
+              - img [ref=e89] [cursor=pointer]
+            - generic [ref=e92]:
+              - button "预约诊断" [ref=e93] [cursor=pointer]
+              - button "联系我们" [ref=e94] [cursor=pointer]
+          - img [ref=e97]:
+            - generic [ref=e130]: GEO System
+        - generic [ref=e143]:
+          - generic [ref=e144]:
+            - img "豆包" [ref=e145]
+            - generic [ref=e146]: 豆包
+          - generic [ref=e147]:
+            - img "腾讯元宝" [ref=e148]
+            - generic [ref=e149]: 腾讯元宝
+          - generic [ref=e150]:
+            - img "Kimi" [ref=e151]
+            - generic [ref=e152]: Kimi
+          - generic [ref=e153]:
+            - img "DeepSeek" [ref=e154]
+            - generic [ref=e155]: DeepSeek
+          - generic [ref=e156]:
+            - img "通义千问" [ref=e157]
+            - generic [ref=e158]: 通义千问
+          - generic [ref=e159]:
+            - img "文心一言" [ref=e160]
+            - generic [ref=e161]: 文心一言
+          - generic [ref=e162]:
+            - img "智谱清言" [ref=e163]
+            - generic [ref=e164]: 智谱清言
+          - generic [ref=e165]:
+            - img "豆包" [ref=e166]
+            - generic [ref=e167]: 豆包
+          - generic [ref=e168]:
+            - img "腾讯元宝" [ref=e169]
+            - generic [ref=e170]: 腾讯元宝
+          - generic [ref=e171]:
+            - img "Kimi" [ref=e172]
+            - generic [ref=e173]: Kimi
+          - generic [ref=e174]:
+            - img "DeepSeek" [ref=e175]
+            - generic [ref=e176]: DeepSeek
+          - generic [ref=e177]:
+            - img "通义千问" [ref=e178]
+            - generic [ref=e179]: 通义千问
+          - generic [ref=e180]:
+            - img "文心一言" [ref=e181]
+            - generic [ref=e182]: 文心一言
+          - generic [ref=e183]:
+            - img "智谱清言" [ref=e184]
+            - generic [ref=e185]: 智谱清言
+          - generic [ref=e186]:
+            - img "豆包" [ref=e187]
+            - generic [ref=e188]: 豆包
+          - generic [ref=e189]:
+            - img "腾讯元宝" [ref=e190]
+            - generic [ref=e191]: 腾讯元宝
+          - generic [ref=e192]:
+            - img "Kimi" [ref=e193]
+            - generic [ref=e194]: Kimi
+          - generic [ref=e195]:
+            - img "DeepSeek" [ref=e196]
+            - generic [ref=e197]: DeepSeek
+          - generic [ref=e198]:
+            - img "通义千问" [ref=e199]
+            - generic [ref=e200]: 通义千问
+          - generic [ref=e201]:
+            - img "文心一言" [ref=e202]
+            - generic [ref=e203]: 文心一言
+          - generic [ref=e204]:
+            - img "智谱清言" [ref=e205]
+            - generic [ref=e206]: 智谱清言
+      - generic [ref=e208]:
+        - heading "AI平台中的品牌危机" [level=2] [ref=e210]
+        - generic [ref=e211]:
+          - generic [ref=e212]:
+            - generic [ref=e213]:
+              - img [ref=e214]
+              - text: 品牌在AI中无露出
+            - generic [ref=e216]: 当用户在AI平台搜索行业相关问题时，您的品牌完全缺席。
+            - generic [ref=e217]:
+              - generic [ref=e218]: 搜索结果零曝光
+              - generic [ref=e219]: 用户无法获取品牌信息
+              - generic [ref=e220]: 错失潜在客户触达
+              - generic [ref=e221]: 品牌认知度持续下降
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - img [ref=e224]
+              - text: 品牌在AI中结果有误
+            - generic [ref=e226]: AI对品牌的描述存在事实错误、信息过时或负面偏差。
+            - generic [ref=e227]:
+              - generic [ref=e228]: 品牌描述存在错误
+              - generic [ref=e229]: 信息严重过时失真
+              - generic [ref=e230]: 负面偏差影响信任
+              - generic [ref=e231]: 专业形象受损
+          - generic [ref=e232]:
+            - generic [ref=e233]:
+              - img [ref=e234]
+              - text: 品牌在AI推荐中落后
+            - generic [ref=e236]: AI优先推荐竞争对手，您的品牌被边缘化。
+            - generic [ref=e237]:
+              - generic [ref=e238]: 竞品占据推荐位
+              - generic [ref=e239]: 品牌被持续边缘化
+              - generic [ref=e240]: 错失首次接触机会
+              - generic [ref=e241]: 高意向客户流失
+          - generic [ref=e242]:
+            - generic [ref=e243]:
+              - img [ref=e244]
+              - text: AI传播品牌黑料
+            - generic [ref=e246]: AI抓取并放大网络上关于品牌的负面信息，持续传播。
+            - generic [ref=e247]:
+              - generic [ref=e248]: 负面信息被放大
+              - generic [ref=e249]: 缺乏正面内容制衡
+              - generic [ref=e250]: 持续传播难消除
+              - generic [ref=e251]: 品牌声誉受威胁
+      - generic [ref=e253]:
+        - generic [ref=e254]:
+          - heading "为什么选择智优康赛" [level=2] [ref=e255]
+          - paragraph [ref=e256]: 行业领先的GEO优化能力，让品牌在AI搜索中脱颖而出
+        - generic [ref=e257]:
+          - generic [ref=e261]:
+            - generic [ref=e262]: "01"
+            - heading "GEO现状评分" [level=3] [ref=e263]
+            - paragraph [ref=e264]: 多维度量化品牌在AI搜索中的综合表现，精准定位优化切入点。
+          - generic [ref=e268]:
+            - generic [ref=e269]: "02"
+            - heading "全主流AI平台覆盖" [level=3] [ref=e270]
+            - paragraph [ref=e271]: 一站式监测与优化豆包、Kimi、DeepSeek等7大主流AI平台。
+          - generic [ref=e275]:
+            - generic [ref=e276]: "03"
+            - heading "灵活可定制的监测频率" [level=3] [ref=e277]
+            - paragraph [ref=e278]: 支持实时、每日、每周多种监测周期，按需灵活配置。
+          - generic [ref=e282]:
+            - generic [ref=e283]: "04"
+            - heading "深度竞品对比分析" [level=3] [ref=e284]
+            - paragraph [ref=e285]: 全方位对比品牌在AI中的呈现与核心竞品，找出差距与机会。
+          - generic [ref=e289]:
+            - generic [ref=e290]: "05"
+            - heading "结构化词包分组管理" [level=3] [ref=e291]
+            - paragraph [ref=e292]: 科学分类管理品牌词、行业词、竞品词，实现精细化运营。
+          - generic [ref=e296]:
+            - generic [ref=e297]: "06"
+            - heading "智能化GEO优化建议" [level=3] [ref=e298]
+            - paragraph [ref=e299]: 基于AI分析自动生成可落地的内容优化策略与执行方案。
+      - generic [ref=e301]:
+        - generic [ref=e302]:
+          - heading "GEO优化五步法" [level=2] [ref=e303]
+          - paragraph [ref=e304]: 从诊断到持续优化，系统化提升品牌AI可见度
+        - generic [ref=e305]:
+          - generic [ref=e306]:
+            - generic [ref=e312]:
+              - img [ref=e313]
+              - text: Step 01 — 痛点诊断
+            - generic [ref=e315]:
+              - generic [ref=e316]: 全面扫描品牌在7大AI平台的露出现状
+              - generic [ref=e317]:
+                - code [ref=e318]: $
+                - code [ref=e319]: geo scan --platforms 7 --brand <brand_name>
+              - generic [ref=e320]: "> GEO现状报告 ✓ 已生成"
+            - img [ref=e322]
+          - generic [ref=e324]:
+            - generic [ref=e330]:
+              - img [ref=e331]
+              - text: Step 02 — 策略定制
+            - generic [ref=e333]:
+              - generic [ref=e334]: 基于诊断结果制定针对性GEO优化策略
+              - generic [ref=e335]:
+                - code [ref=e336]: $
+                - code [ref=e337]: geo strategy --input diagnosis.json --output plan
+              - generic [ref=e338]: "> GEO优化策略书 ✓ 已生成"
+            - img [ref=e340]
+          - generic [ref=e342]:
+            - generic [ref=e348]:
+              - img [ref=e349]
+              - text: Step 03 — 内容生产
+            - generic [ref=e351]:
+              - generic [ref=e352]: 创作高质量AI友好的品牌内容资产
+              - generic [ref=e353]:
+                - code [ref=e354]: $
+                - code [ref=e355]: geo content --type ai-friendly --scale full
+              - generic [ref=e356]: "> AI友好内容库 ✓ 已构建"
+            - img [ref=e358]
+          - generic [ref=e360]:
+            - generic [ref=e366]:
+              - img [ref=e367]
+              - text: Step 04 — AI占位
+            - generic [ref=e369]:
+              - generic [ref=e370]: 通过结构化数据布局让AI优先推荐品牌
+              - generic [ref=e371]:
+                - code [ref=e372]: $
+                - code [ref=e373]: geo deploy --channels authority --mode occupy
+              - generic [ref=e374]: "> AI推荐占位 ✓ 已完成"
+            - img [ref=e376]
+          - generic [ref=e378]:
+            - generic [ref=e384]:
+              - img [ref=e385]
+              - text: Step 05 — 动态更迭
+            - generic [ref=e387]:
+              - generic [ref=e388]: 持续监测AI反馈迭代优化内容策略
+              - generic [ref=e389]:
+                - code [ref=e390]: $
+                - code [ref=e391]: geo iterate --monitor realtime --loop optimize
+              - generic [ref=e392]: "> 持续优化迭代 ✓ 运行中"
+      - generic [ref=e394]:
+        - generic [ref=e395]:
+          - heading "客户增长数据" [level=2] [ref=e396]
+          - paragraph [ref=e397]: 真实行业数据，见证GEO带来的品牌增长力量
+        - generic [ref=e398]:
+          - generic [ref=e399]:
+            - img
+            - generic [ref=e401]:
+              - generic [ref=e402]: 快消品行业
+              - generic [ref=e403]: "0"
+              - generic [ref=e404]: 次新品上市曝光增长
+          - generic [ref=e405]:
+            - img
+            - generic [ref=e407]:
+              - generic [ref=e408]: 大健康行业
+              - generic [ref=e409]: "0"
+              - generic [ref=e410]: 用户信任度提升
+          - generic [ref=e411]:
+            - img
+            - generic [ref=e413]:
+              - generic [ref=e414]: 汽车行业
+              - generic [ref=e415]: "0"
+              - generic [ref=e416]: 用户咨询量增长
+          - generic [ref=e417]:
+            - img
+            - generic [ref=e419]:
+              - generic [ref=e420]: 教育行业
+              - generic [ref=e421]: "0"
+              - generic [ref=e422]: AI直接访问成主要流量来源
+          - generic [ref=e423]:
+            - img
+            - generic [ref=e425]:
+              - generic [ref=e426]: 企业服务
+              - generic [ref=e427]: "0"
+              - generic [ref=e428]: 全搜索场景覆盖率提升
+          - generic [ref=e429]:
+            - img
+            - generic [ref=e431]:
+              - generic [ref=e432]: B2B获客
+              - generic [ref=e433]: "0"
+              - generic [ref=e434]: 精准线索增长
+          - generic [ref=e435]:
+            - img
+            - generic [ref=e437]:
+              - generic [ref=e438]: 新品牌冷启动
+              - generic [ref=e439]: "0"
+              - generic [ref=e440]: 品牌信息覆盖率提升
+          - generic [ref=e441]:
+            - img
+            - generic [ref=e443]:
+              - generic [ref=e444]: 制造业
+              - generic [ref=e445]: "0"
+              - generic [ref=e446]: 采购线索增长
+        - generic [ref=e447]:
+          - paragraph [ref=e448]: 值得信赖的合作伙伴
+          - generic [ref=e450]:
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+            - img "客户Logo"
+      - generic [ref=e452]:
+        - generic [ref=e453]:
+          - heading "他们选择了智优康赛" [level=2] [ref=e454]
+          - paragraph [ref=e455]: 来自各行业领先企业的真实反馈
+        - generic [ref=e456]:
+          - generic [ref=e457]:
+            - generic [ref=e459]:
+              - img "陈默" [ref=e460]
+              - generic [ref=e461]:
+                - generic [ref=e462]: 陈默
+                - generic [ref=e463]: 某企业服务平台 市场总监
+              - paragraph [ref=e464]: "\"和智优康赛合作后，精准线索量增长近4倍，高价值企业咨询占比超90%，彻底重构了我们的获客体系。"
+            - generic [ref=e466]:
+              - img "赵建国" [ref=e467]
+              - generic [ref=e468]:
+                - generic [ref=e469]: 赵建国
+                - generic [ref=e470]: 某工业自动化公司 销售总经理
+              - paragraph [ref=e471]: "\"智优康赛帮我们打通了AI搜索获客链路，政务与企业采购咨询量翻倍，核心行业词稳居搜索前列。"
+            - generic [ref=e473]:
+              - img "林晓" [ref=e474]
+              - generic [ref=e475]:
+                - generic [ref=e476]: 林晓
+                - generic [ref=e477]: 某快消品牌 数字营销负责人
+              - paragraph [ref=e478]: "\"智优康赛的AI适配优化效果显著，新品上市首月自然曝光突破2亿，远超我们的预期目标。"
+            - generic [ref=e480]:
+              - img "周婷" [ref=e481]
+              - generic [ref=e482]:
+                - generic [ref=e483]: 周婷
+                - generic [ref=e484]: 某大健康科技公司 品牌总监
+              - paragraph [ref=e485]: "\"智优康赛兼顾合规性与转化效果，品牌信息覆盖率提升80%，用户信任度和咨询转化率同步上涨。"
+            - generic [ref=e487]:
+              - img "苏航" [ref=e488]
+              - generic [ref=e489]:
+                - generic [ref=e490]: 苏航
+                - generic [ref=e491]: 某在线教育平台 增长负责人
+              - paragraph [ref=e492]: "\"智优康赛帮我们抢占了AI教育问答流量，自然搜索咨询量增长260%，获客成本降低35%。"
+            - generic [ref=e494]:
+              - img "吴涛" [ref=e495]
+              - generic [ref=e496]:
+                - generic [ref=e497]: 吴涛
+                - generic [ref=e498]: 某新能源汽车品牌 数字营销经理
+              - paragraph [ref=e499]: "\"和智优康赛合作后，车型相关AI搜索推荐率提升70%，线上试驾预约量翻倍。"
+            - generic [ref=e501]:
+              - img "郑雨" [ref=e502]
+              - generic [ref=e503]:
+                - generic [ref=e504]: 郑雨
+                - generic [ref=e505]: 某金融科技公司 运营总监
+              - paragraph [ref=e506]: "\"智优康赛的合规化GEO方案很专业，精准线索增长180%，高净值客户占比达65%。"
+            - generic [ref=e508]:
+              - img "孙哲" [ref=e509]
+              - generic [ref=e510]:
+                - generic [ref=e511]: 孙哲
+                - generic [ref=e512]: 某SaaS软件公司 市场VP
+              - paragraph [ref=e513]: "\"智优康赛重构了我们的搜索内容矩阵，自然流量占比从15%提升至42%，ROI达1:9。"
+            - generic [ref=e515]:
+              - img "李悦" [ref=e516]
+              - generic [ref=e517]:
+                - generic [ref=e518]: 李悦
+                - generic [ref=e519]: 某跨境电商品牌 海外营销总监
+              - paragraph [ref=e520]: "\"智优康赛帮我们打通了多语言AI搜索链路，海外精准流量增长320%，订单转化率提升28%。"
+            - generic [ref=e522]:
+              - img "王凯" [ref=e523]
+              - generic [ref=e524]:
+                - generic [ref=e525]: 王凯
+                - generic [ref=e526]: 某家居品牌 电商负责人
+              - paragraph [ref=e527]: "\"智优康赛的AI内容适配效果突出，家居场景词搜索排名全面提升，大促期间自然订单增长150%。"
+          - generic [ref=e528]:
+            - button [disabled] [ref=e529]:
+              - img [ref=e530]
+            - button [ref=e543] [cursor=pointer]:
+              - img [ref=e544]
+      - generic [ref=e549]:
+        - img
+        - generic [ref=e551]:
+          - generic [ref=e552]:
+            - heading "开启GEO优化之旅" [level=2] [ref=e553]
+            - paragraph [ref=e554]: 让AI成为品牌增长的新引擎，现在就开始行动
+            - generic [ref=e555]:
+              - button "预约诊断" [ref=e556] [cursor=pointer]
+              - button "联系我们" [ref=e557] [cursor=pointer]
+          - generic [ref=e561] [cursor=pointer]:
+            - generic [ref=e564]:
+              - generic [ref=e565]: 你好
+              - generic [ref=e566]: AI
+            - generic [ref=e567]:
+              - generic [ref=e568]: Touch to unlock
+              - img [ref=e569]
+  - contentinfo [ref=e571]:
+    - generic [ref=e573]:
+      - generic [ref=e574]:
+        - img "智优康赛" [ref=e575]
+        - paragraph [ref=e576]: AI搜索时代的品牌全球化战略伙伴，让AI主动推荐你的品牌。
+        - generic [ref=e577]:
+          - img "微信二维码" [ref=e578]
+          - generic [ref=e579]: 关注公众号
+      - generic [ref=e580]:
+        - heading "解决方案" [level=4] [ref=e581] [cursor=pointer]
+        - list [ref=e582]:
+          - listitem [ref=e583]: 全方位GEO
+          - listitem [ref=e584]: 主流平台
+          - listitem [ref=e585]: 优化策略
+          - listitem [ref=e586]: GEO法则
+          - listitem [ref=e587]: GEO成效
+      - generic [ref=e588]:
+        - heading "客户案例" [level=4] [ref=e589] [cursor=pointer]
+        - list [ref=e590]:
+          - listitem [ref=e591]: 成效数据
+          - listitem [ref=e592]: 客户评价
+          - listitem [ref=e593]: 合作伙伴
+      - generic [ref=e594]:
+        - heading "智优平台" [level=4] [ref=e595] [cursor=pointer]
+        - list [ref=e596]:
+          - listitem [ref=e597]: 智优系统
+          - listitem [ref=e598]: 核心能力
+          - listitem [ref=e599]: 系统优势
+          - listitem [ref=e600]: 系统赋能
+      - generic [ref=e601]:
+        - heading "资源中心" [level=4] [ref=e602] [cursor=pointer]
+        - list [ref=e603]:
+          - listitem [ref=e604]: GEO白皮书
+          - listitem [ref=e605]: GEO联盟
+          - listitem [ref=e606]: GEO常见问题
+      - generic [ref=e607]:
+        - heading "关于我们" [level=4] [ref=e608] [cursor=pointer]
+        - list [ref=e609]:
+          - listitem [ref=e610]: 公司介绍
+          - listitem [ref=e611]: 行业背书
+          - listitem [ref=e612]: 核心业务
+          - listitem [ref=e613]: 权威认证
+    - paragraph [ref=e616]: 智优康赛. All rights reserved.

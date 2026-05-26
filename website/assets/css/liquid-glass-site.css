@@ -1,0 +1,576 @@
+/* ============================================================
+   Liquid Glass — 全站覆盖样式
+   ────────────────────────────────────────────────
+   覆写各 section 原有按钮/标签样式，让 liquid-glass.css 组件接管
+   视觉层级：::after(内凹阴影) → ::before(鼠标填充) → 子元素(文字)
+   ============================================================ */
+
+/* ---------- 0. 隐藏旧滑入遮罩，液态玻璃用 ::before 径向填充替代 ---------- */
+
+.lg-btn > .cta-mask,
+.lg-btn > .section-6__submit-mask {
+  display: none !important;
+}
+
+/* ---------- 1. Hero 按钮（深色 · 视频背景上） ---------- */
+
+.hero-section .tec-cta.lg-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #F1F5F9;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.3),
+    0 2px 6px rgba(0, 0, 0, 0.16);
+  --lg-fill-color: rgba(255, 255, 255, 0.92);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.32);
+  --lg-fill-blend: overlay;
+  --lg-recess-top: rgba(0, 0, 0, 0.3);
+  --lg-recess-side: rgba(0, 0, 0, 0.16);
+  --lg-recess-bot: rgba(255, 255, 255, 0.12);
+}
+
+@media (hover: hover) {
+  .hero-section .tec-cta.lg-btn:hover {
+    box-shadow:
+      0 14px 36px rgba(0, 0, 0, 0.38),
+      0 2px 6px rgba(0, 0, 0, 0.18);
+  }
+
+  .hero-section .tec-cta.lg-btn:hover .cta-text {
+    color: #FFFFFF;
+  }
+}
+
+/* ---------- 2. Header 非浮动态按钮（与 Hero 一致，深色） ---------- */
+/* 非浮动态 .tec-actions 已被 header.css 设为 max-width:0 不可见，
+   此处仅设初始值让过渡起点正确 */
+
+.tec-header:not(.header--floating) .tec-cta.lg-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #F1F5F9;
+  box-shadow: none;
+}
+
+/* ---------- 3. Header 浮动态按钮（浅色 · 白底导航栏） ---------- */
+
+.header--floating .tec-cta.lg-btn {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(10, 20, 40, 0.07);
+  color: var(--text);
+  box-shadow:
+    0 8px 20px rgba(10, 20, 40, 0.06),
+    0 2px 4px rgba(10, 20, 40, 0.03);
+  --lg-fill-color: rgba(255, 255, 255, 1);
+  --lg-fill-color-2: rgba(200, 220, 255, 0.4);
+  --lg-fill-blend: normal;
+  --lg-recess-top: rgba(10, 20, 40, 0.12);
+  --lg-recess-side: rgba(10, 20, 40, 0.05);
+  --lg-recess-bot: rgba(255, 255, 255, 0.38);
+}
+
+@media (hover: hover) {
+  .header--floating .tec-cta.lg-btn:hover {
+    box-shadow:
+      0 12px 28px rgba(10, 20, 40, 0.09),
+      0 2px 4px rgba(10, 20, 40, 0.04);
+  }
+
+  .header--floating .tec-cta.lg-btn:hover .cta-text {
+    color: var(--text);
+  }
+}
+
+/* ---------- 4a. Section-2 CTA（与优势卡同款 lg-btn 标准玻璃风） ---------- */
+
+.section-2__cta-area .tec-cta.lg-btn {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #F1F5F9;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.2),
+    0 2px 5px rgba(0, 0, 0, 0.1);
+  --lg-fill-color: rgba(255, 255, 255, 0.85);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.25);
+  --lg-fill-blend: overlay;
+  --lg-recess-top: rgba(0, 0, 0, 0.26);
+  --lg-recess-side: rgba(0, 0, 0, 0.13);
+  --lg-recess-bot: rgba(255, 255, 255, 0.1);
+}
+
+@media (hover: hover) {
+  .section-2__cta-area .tec-cta.lg-btn:hover .cta-text {
+    color: #FFFFFF;
+  }
+}
+
+/* ---------- 4b. Section-5 CTA（浅色背景，浅色玻璃） ---------- */
+
+.section-5__cta.lg-btn {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(10, 20, 40, 0.08);
+  color: var(--text);
+  box-shadow:
+    0 10px 24px rgba(10, 20, 40, 0.07),
+    0 2px 6px rgba(10, 20, 40, 0.04);
+  --lg-fill-color: rgba(255, 255, 255, 1);
+  --lg-fill-color-2: rgba(235, 240, 255, 0.5);
+  --lg-fill-blend: normal;
+  --lg-recess-top: rgba(10, 20, 40, 0.14);
+  --lg-recess-side: rgba(10, 20, 40, 0.06);
+  --lg-recess-bot: rgba(255, 255, 255, 0.35);
+  transition:
+    background-color .35s var(--ease),
+    border-color .35s var(--ease),
+    color .35s var(--ease),
+    box-shadow .35s var(--ease),
+    transform .35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .section-5__cta.lg-btn:hover {
+    background: var(--text);
+    border-color: var(--text);
+    color: #FFFFFF;
+    box-shadow:
+      0 16px 36px rgba(10, 20, 40, 0.32),
+      0 4px 10px rgba(10, 20, 40, 0.18);
+  }
+
+  .section-5__cta.lg-btn:hover .cta-text {
+    color: #FFFFFF;
+  }
+}
+
+/* ---------- 5. Section-3p5 proof pills（深色背景） ---------- */
+
+.section-3p5__proof-pill.lg-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(241, 245, 249, 0.14);
+  color: rgba(241, 245, 249, 0.86);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.22),
+    0 2px 4px rgba(0, 0, 0, 0.12);
+  --lg-fill-color: rgba(255, 255, 255, 0.85);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.25);
+  --lg-fill-blend: overlay;
+  --lg-recess-top: rgba(0, 0, 0, 0.26);
+  --lg-recess-side: rgba(0, 0, 0, 0.13);
+  --lg-recess-bot: rgba(255, 255, 255, 0.1);
+}
+
+@media (hover: hover) {
+  .section-3p5__proof-pill.lg-tag:hover {
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow:
+      0 8px 22px rgba(0, 0, 0, 0.28),
+      0 2px 4px rgba(0, 0, 0, 0.14);
+    transform: translate3d(0, -2px, 0) scale(var(--press, 1));
+  }
+}
+
+/* ---------- 6. Section-6 表单卡片 — 白底黑字 ---------- */
+
+#section-6 .section-6__form {
+  background: #FFFFFF;
+  border: 1px solid rgba(10, 20, 40, 0.06);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.28),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* 表单内文字：全部深色 */
+#section-6 .section-6__label {
+  color: var(--text);
+}
+
+#section-6 .section-6__input {
+  color: var(--text);
+  border-bottom-color: rgba(10, 20, 40, 0.18);
+}
+
+#section-6 .section-6__input:focus {
+  border-bottom-color: var(--main);
+}
+
+#section-6 .section-6__input::placeholder {
+  color: rgba(10, 20, 40, 0.4);
+}
+
+/* ---------- 6a. Section-6 chips（白底 · 浅色上下文） ---------- */
+
+#section-6 .section-6__chip.lg-tag {
+  background: #F6F8FB;
+  border-color: rgba(10, 20, 40, 0.1);
+  color: var(--text);
+  box-shadow:
+    0 1px 2px rgba(10, 20, 40, 0.04);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  --lg-fill-color: rgba(56, 189, 248, 0.85);
+  --lg-fill-color-2: rgba(56, 189, 248, 0.25);
+  --lg-fill-blend: normal;
+  --lg-recess-top: rgba(10, 20, 40, 0.08);
+  --lg-recess-side: rgba(10, 20, 40, 0.04);
+  --lg-recess-bot: rgba(255, 255, 255, 0.5);
+}
+
+@media (hover: hover) {
+  .section-6__chip.lg-tag:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.08);
+  }
+}
+
+/* 选中态 */
+#section-6 .section-6__chip.lg-tag[data-selected="true"] {
+  background: var(--main);
+  border-color: var(--main);
+  color: #FFFFFF;
+  box-shadow:
+    0 6px 18px rgba(56, 189, 248, 0.22),
+    0 2px 4px rgba(56, 189, 248, 0.12);
+  --lg-fill-color: rgba(255, 255, 255, 0.55);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.18);
+  --lg-fill-blend: overlay;
+  --lg-recess-top: rgba(0, 0, 0, 0.18);
+  --lg-recess-side: rgba(0, 0, 0, 0.08);
+  --lg-recess-bot: rgba(255, 255, 255, 0.15);
+}
+
+@media (hover: hover) {
+  #section-6 .section-6__chip.lg-tag[data-selected="true"]:hover {
+    background: var(--main);
+    border-color: var(--main);
+    color: #FFFFFF;
+  }
+}
+
+/* ---------- 6b. Section-6 dropdown trigger（白底） ---------- */
+
+#section-6 .section-6__dropdown-trigger.lg-btn {
+  background: #F6F8FB;
+  border-color: rgba(10, 20, 40, 0.1);
+  color: var(--text);
+  box-shadow:
+    0 1px 2px rgba(10, 20, 40, 0.04);
+  --lg-recess-top: rgba(10, 20, 40, 0.08);
+  --lg-recess-side: rgba(10, 20, 40, 0.04);
+  --lg-recess-bot: rgba(255, 255, 255, 0.5);
+}
+
+#section-6 .section-6__dropdown-text {
+  color: rgba(10, 20, 40, 0.5);
+}
+
+#section-6 .section-6__dropdown[data-selected="true"] .section-6__dropdown-text {
+  color: var(--text);
+}
+
+#section-6 .section-6__dropdown-arrow {
+  color: rgba(10, 20, 40, 0.45);
+}
+
+@media (hover: hover) {
+  .section-6__dropdown-trigger.lg-btn:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+  }
+}
+
+.section-6__dropdown[data-open="true"] .section-6__dropdown-trigger.lg-btn {
+  border-color: var(--main);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- 6c. Section-6 submit（蓝色主按钮 + 液态玻璃内凹） ---------- */
+
+#section-6 .section-6__submit.lg-btn {
+  background: linear-gradient(135deg, #38BDF8 0%, #2F66FF 100%);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  box-shadow:
+    0 12px 32px rgba(47, 102, 255, 0.32),
+    0 2px 6px rgba(47, 102, 255, 0.18);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  --lg-fill-color: rgba(255, 255, 255, 0.32);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.1);
+  --lg-fill-blend: overlay;
+  --lg-recess-top: rgba(0, 0, 0, 0.18);
+  --lg-recess-side: rgba(0, 0, 0, 0.08);
+  --lg-recess-bot: rgba(255, 255, 255, 0.22);
+}
+
+@media (hover: hover) {
+  .section-6__submit.lg-btn:hover {
+    box-shadow:
+      0 14px 38px rgba(47, 102, 255, 0.3),
+      0 2px 6px rgba(47, 102, 255, 0.16);
+  }
+}
+
+/* ---------- 9. 移动端菜单按钮（浅色背景） ---------- */
+
+.mobile-menu-overlay .tec-cta.lg-btn {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(10, 20, 40, 0.06);
+  color: var(--text);
+  box-shadow:
+    0 8px 20px rgba(10, 20, 40, 0.06),
+    0 2px 4px rgba(10, 20, 40, 0.03);
+  --lg-fill-color: rgba(255, 255, 255, 1);
+  --lg-fill-color-2: rgba(200, 220, 255, 0.4);
+  --lg-fill-blend: normal;
+  --lg-recess-top: rgba(10, 20, 40, 0.12);
+  --lg-recess-side: rgba(10, 20, 40, 0.05);
+  --lg-recess-bot: rgba(255, 255, 255, 0.38);
+}
+
+/* ---------- 10. 响应式微调 ---------- */
+
+@media (max-width: 768px) {
+  /* 手机上降低外凸阴影强度，避免过于立体 */
+  /* 深色背景按钮（Hero / Section-2 CTA / Section-3p5 pills） */
+  .hero-section .tec-cta.lg-btn,
+  .section-2__cta-area .tec-cta.lg-btn,
+  .section-3p5__proof-pill.lg-tag {
+    box-shadow:
+      0 6px 16px rgba(0, 0, 0, 0.2),
+      0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 浅色背景按钮（Section-5 / Section-6 表单内）：弱化外阴影 */
+  .section-5__cta.lg-btn,
+  .section-6__chip.lg-tag,
+  .section-6__dropdown-trigger.lg-btn {
+    box-shadow:
+      0 4px 10px rgba(10, 20, 40, 0.05),
+      0 1px 2px rgba(10, 20, 40, 0.03);
+  }
+}
+
+/* ---------- 11. 减弱动画偏好 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-btn,
+  .lg-tag {
+    transition: none !important;
+  }
+
+  .lg-btn::before,
+  .lg-tag::before {
+    transition: none !important;
+  }
+}
+
+/* ---------- 12. Section-3 logo marquee cards ---------- */
+
+.section-3__top-card.lg-logo-card {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.2),
+    0 2px 5px rgba(0, 0, 0, 0.1);
+  --lg-fill-color: rgba(255, 255, 255, 0.85);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.25);
+  --lg-fill-blend: overlay;
+  --lg-recess-top: rgba(0, 0, 0, 0.26);
+  --lg-recess-side: rgba(0, 0, 0, 0.13);
+  --lg-recess-bot: rgba(255, 255, 255, 0.1);
+}
+
+.section-3__top-card.lg-logo-card .section-3__top-card-name {
+  color: rgba(241, 245, 249, 0.9);
+}
+
+/* ---------- 13. Section-3 优势卡（与 logo 卡同一玻璃风） ---------- */
+
+.section-3__advantage.lg-card {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.2),
+    0 2px 5px rgba(0, 0, 0, 0.1);
+  --lg-fill-color: rgba(255, 255, 255, 0.85);
+  --lg-fill-color-2: rgba(255, 255, 255, 0.25);
+  --lg-fill-blend: overlay;
+  --lg-recess-top: rgba(0, 0, 0, 0.26);
+  --lg-recess-side: rgba(0, 0, 0, 0.13);
+  --lg-recess-bot: rgba(255, 255, 255, 0.1);
+}
+
+@media (hover: hover) {
+  .section-3__advantage.lg-card:hover {
+    border-color: rgba(120, 180, 255, 0.45);
+  }
+}
+
+/* 液态玻璃组件 demo 容器内（.lg-stage--*）的默认透明 bg
+   注意：站点上 .tec-cta.lg-btn 和 .section-2__cta-area 不在此列表 ——
+   它们要用渐变 background 模拟玻璃折射光路；
+   各 section 按钮（hero/header/section-5/section-6 等）有自己的 background 规则。 */
+.lg-stage--light .lg-btn,
+.lg-stage--light .lg-tag,
+.lg-stage--light .lg-card,
+.lg-stage--light .lg-logo-card,
+.lg-stage--dark .lg-btn,
+.lg-stage--dark .lg-tag,
+.lg-stage--dark .lg-card,
+.lg-stage--dark .lg-logo-card,
+.section-3__top-card.lg-logo-card,
+.section-3p5__proof-pill.lg-tag {
+  background: transparent;
+  background-color: transparent;
+}
+
+/* ---------- 14. 所有玻璃风 CTA 按钮：强烈浅蓝荧光霓虹（neon glow） ---------- */
+/* 配方：亮蓝边框（锐边）+ 5 层 drop-shadow 叠加（由近到远，由强到弱）
+   ::before 内层光环：紧贴 border 的亮环（像霓虹灯管） */
+
+.hero-section .tec-cta.lg-btn {
+  border-color: rgba(125, 211, 252, 0.7) !important;   /* 亮天蓝边框（锐边） */
+  /* 仅贴边荧光：1px 锐光 + 4px 柔光 */
+  filter:
+    drop-shadow(0 0 1px rgba(56, 189, 248, 0.9))
+    drop-shadow(0 0 4px rgba(56, 189, 248, 0.55));
+  transition: filter .35s var(--ease), border-color .35s var(--ease);
+}
+
+@media (hover: hover) {
+  .hero-section .tec-cta.lg-btn:hover {
+    border-color: rgba(186, 230, 253, 0.95) !important;
+    filter:
+      drop-shadow(0 0 2px rgba(56, 189, 248, 1))
+      drop-shadow(0 0 6px rgba(56, 189, 248, 0.75));
+  }
+}
+
+/* 减弱动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .tec-cta.lg-btn {
+    transition: none !important;
+  }
+}
+
+/* ---------- 背景临时预览工具：仅前端替换，不保存 ---------- */
+
+[data-bg-preview-root] {
+  position: relative;
+}
+
+.bg-preview-image,
+.bg-preview-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-preview-image {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+[data-bg-preview-root][data-bg-preview="image"] .bg-preview-image,
+[data-bg-preview-root][data-bg-preview="video"] .bg-preview-video,
+[data-bg-preview-root][data-bg-preview="video"] [data-bg-preview-video] {
+  display: block;
+}
+
+[data-bg-preview-root][data-bg-preview="image"] [data-bg-preview-video] {
+  display: none !important;
+}
+
+.bg-preview-tools {
+  position: absolute;
+  top: clamp(72px, 6vw, 104px);
+  right: clamp(18px, 3vw, 54px);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(8px, .7vw, 12px);
+  pointer-events: auto;
+}
+
+.bg-preview-upload.lg-btn,
+.bg-preview-reset {
+  min-height: clamp(38px, 2.7vw, 46px);
+  padding: clamp(9px, .7vw, 12px) clamp(14px, 1.15vw, 22px);
+  border-radius: 999px;
+  font-size: clamp(12px, .78vw, 15px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.bg-preview-upload.lg-btn {
+  gap: clamp(6px, .5vw, 10px);
+  color: #FFFFFF;
+  border-color: rgba(255,255,255,.28);
+  background: rgba(255,255,255,.12);
+  background-color: rgba(255,255,255,.12);
+  box-shadow: 0 10px 28px rgba(0,0,0,.18);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+}
+
+.bg-preview-upload-icon {
+  width: clamp(15px, 1vw, 18px);
+  height: clamp(15px, 1vw, 18px);
+  flex-shrink: 0;
+}
+
+.bg-preview-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-preview-reset {
+  border: 1px solid rgba(255,255,255,.22);
+  color: rgba(255,255,255,.86);
+  background: rgba(8,17,31,.38);
+  cursor: pointer;
+  font-family: inherit;
+  transition: color .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease);
+}
+
+@media (hover: hover) {
+  .bg-preview-upload.lg-btn:hover,
+  .bg-preview-reset:hover {
+    color: #FFFFFF;
+    border-color: rgba(56,189,248,.72);
+    background: rgba(56,189,248,.18);
+    background-color: rgba(56,189,248,.18);
+  }
+}
+
+@media (max-width: 767px) {
+  .bg-preview-tools {
+    top: clamp(72px, 18vw, 96px);
+    right: clamp(14px, 4vw, 20px);
+    gap: 8px;
+  }
+
+  .bg-preview-upload.lg-btn,
+  .bg-preview-reset {
+    min-height: 36px;
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .bg-preview-upload-icon {
+    width: 14px;
+    height: 14px;
+  }
+}

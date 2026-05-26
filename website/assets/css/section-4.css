@@ -1,0 +1,227 @@
+/* ============================================================
+   Section-4 客户的声音 — Swiper Coverflow 3D 轮播
+   ────────────────────────────────────────────────
+   - 用 Swiper 原生 coverflow 效果，CSS 只管视觉
+   - 方形大头像（占卡片 58% 高度，人物介绍卡风）
+   ============================================================ */
+
+#section-4.home-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(80px, 8vw, 160px) 0;
+  background: #0A1428;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.section-4__bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section-4__bg-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(10,20,40,.55) 0%, rgba(10,20,40,.7) 100%);
+}
+
+.section-4__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 80px);
+  box-sizing: border-box;
+}
+
+.section-4__head {
+  text-align: center;
+  margin-bottom: clamp(48px, 5vw, 96px);
+}
+
+.section-4__title {
+  margin: 0;
+  color: #F1F5F9;
+  font-size: clamp(32px, 3.8vw, 64px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .45), 0 1px 2px rgba(0, 0, 0, .35);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- 轮播容器 ---------- */
+
+.section-4__carousel {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: clamp(40px, 4vw, 80px) 0;
+}
+
+.section-4__swiper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: visible; /* 让侧卡能伸出容器 */
+  padding: clamp(24px, 2vw, 40px) 0;
+}
+
+.section-4__swiper .swiper-wrapper {
+  align-items: center;
+}
+
+/* ---------- 卡片（Swiper slide）---------- */
+
+.section-4__card {
+  /* Swiper 用 slidesPerView:'auto' 时，slide 用自己的 width */
+  width: clamp(260px, 24vw, 360px);
+  height: clamp(380px, 36vw, 520px);
+  flex-shrink: 0;
+  cursor: pointer;
+  /* 移除 opacity transition：与 Swiper transform 动画错位会造成卡顿
+     侧卡用 rotate/scale/translateZ 已足够区分，不需要再叠加透明度变化 */
+}
+
+.section-4__card.swiper-slide-active {
+  cursor: default;
+}
+
+.section-4__card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: clamp(20px, 1.6vw, 28px);
+  background: linear-gradient(170deg, #FFFFFF 0%, #F2F7FC 100%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 20px 50px rgba(10, 20, 40, 0.18),
+    0 8px 20px rgba(56, 189, 248, 0.08);
+  overflow: hidden;
+}
+
+/* 中央卡片：顶部蓝色高亮线 */
+.section-4__card-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 56%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--main), transparent);
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity .55s var(--ease);
+  z-index: 2;
+}
+
+.section-4__card.swiper-slide-active .section-4__card-inner::before {
+  opacity: 1;
+}
+
+/* 头像区：方形圆角，占卡片上半部 */
+.section-4__card-avatar {
+  position: relative;
+  width: 100%;
+  height: 58%;
+  flex: 0 0 58%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #38BDF8 0%, #6BB4FF 100%);
+}
+
+.section-4__card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.section-4__card-avatar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(242, 247, 252, 0.7), transparent);
+  pointer-events: none;
+}
+
+/* 文字区 */
+.section-4__card-quote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: clamp(18px, 1.6vw, 28px) clamp(20px, 1.8vw, 28px) clamp(10px, .8vw, 14px);
+  font-size: clamp(14px, 1vw, 17px);
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.section-4__card-name {
+  margin: auto 0 clamp(2px, .25vw, 4px);
+  padding: 0 clamp(20px, 1.8vw, 28px);
+  font-size: clamp(15px, 1.05vw, 18px);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+.section-4__card-role {
+  margin: 0;
+  padding: 0 clamp(20px, 1.8vw, 28px) clamp(18px, 1.6vw, 26px);
+  font-size: clamp(12px, .9vw, 14px);
+  font-weight: 400;
+  color: rgba(10, 20, 40, 0.55);
+  letter-spacing: 0;
+}
+
+/* ---------- 响应式 ---------- */
+
+@media (max-width: 1023px) {
+  .section-4__card {
+    width: clamp(240px, 46vw, 320px);
+    height: clamp(360px, 68vw, 480px);
+  }
+}
+
+@media (max-width: 599px) {
+  .section-4__inner { padding: 0; }
+  .section-4__card {
+    width: 72vw;
+    max-width: 300px;
+    height: 110vw;
+    max-height: 460px;
+  }
+  .section-4__card-quote { font-size: clamp(14px, 4vw, 16px); }
+}
+
+/* ---------- 减弱动画 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .section-4__card {
+    transition: none !important;
+  }
+}
