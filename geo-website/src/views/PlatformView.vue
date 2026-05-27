@@ -5,7 +5,7 @@ import BlurText from '../components/BlurText.vue'
 import MagicRings from '../components/MagicRings.vue'
 import TimelineSteps from '../components/TimelineSteps.vue'
 import GeoWorkflow from '../components/GeoWorkflow.vue'
-import CircularGallery from '../components/CircularGallery.vue'
+import BentoGrid from '../components/BentoGrid.vue'
 
 // ========== Section 2: 核心功能 - Timeline Steps ==========
 const coreFunctions = [
@@ -40,14 +40,14 @@ const advantages = [
   }
 ]
 
-// ========== Section 4: 系统赋能 - Circular Gallery ==========
-const galleryItems = [
-  { image: 'https://picsum.photos/seed/enterprise/800/600', text: '企业品牌' },
-  { image: 'https://picsum.photos/seed/ecommerce/800/600', text: '电商零售' },
-  { image: 'https://picsum.photos/seed/b2bservice/800/600', text: 'B2B服务' },
-  { image: 'https://picsum.photos/seed/healthcare/800/600', text: '医疗健康' },
-  { image: 'https://picsum.photos/seed/edutech/800/600', text: '教育科技' },
-  { image: 'https://picsum.photos/seed/finance/800/600', text: '金融服务' }
+// ========== Section 4: 系统赋能 - BentoGrid ==========
+const bentoCards = [
+  { color: '#0a0a1a', title: '企业品牌', description: 'GEO全面覆盖', label: 'Brand' },
+  { color: '#0a0a1a', title: '电商零售', description: 'AI推荐优化', label: 'E-Commerce' },
+  { color: '#0a0a1a', title: 'B2B服务', description: '语义占位策略', label: 'B2B' },
+  { color: '#0a0a1a', title: '医疗健康', description: '权威内容训练', label: 'Healthcare' },
+  { color: '#0a0a1a', title: '教育科技', description: '知识图谱构建', label: 'EdTech' },
+  { color: '#0a0a1a', title: '金融服务', description: '合规语义优化', label: 'Finance' }
 ]
 </script>
 
@@ -202,7 +202,7 @@ const galleryItems = [
       </div>
     </section>
 
-    <!-- ========== SECTION 4: 系统赋能 - Circular Gallery ========== -->
+    <!-- ========== SECTION 4: 系统赋能 - BentoGrid ========== -->
     <section class="section empower-section">
       <div class="section-bg" />
       <div class="section-content">
@@ -217,17 +217,17 @@ const galleryItems = [
           />
         </div>
 
-        <div class="gallery-container">
-          <CircularGallery
-            :items="galleryItems"
-            :bend="3"
-            textColor="#ffffff"
-            :borderRadius="0.05"
-            font="bold 28px Inter"
-            :scrollSpeed="2"
-            :scrollEase="0.05"
-          />
-        </div>
+        <BentoGrid
+          :cards="bentoCards"
+          :enable-stars="true"
+          :enable-spotlight="true"
+          :enable-border-glow="true"
+          :enable-tilt="false"
+          :click-effect="true"
+          :enable-magnetism="true"
+          :text-auto-hide="true"
+          glow-color="75, 51, 255"
+        />
       </div>
     </section>
   </div>
@@ -323,7 +323,7 @@ const galleryItems = [
 .section-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/images/resources-bg.png');
+  background-image: url('/images/3a4e44575b374bdd116393335e4fbdfd.png');
   background-size: cover;
   background-position: center;
   filter: brightness(0.55) contrast(1.1) saturate(0.85);
@@ -492,15 +492,16 @@ const galleryItems = [
   line-height: 1.3 !important;
 }
 
-// ========== SECTION 4: 系统赋能 - Circular Gallery ==========
-.gallery-container {
-  width: 100%;
-  height: 500px;
-  position: relative;
-  overflow: hidden;
+// ========== SECTION 4: 系统赋能 - BentoGrid ==========
+.empower-section {
+  overflow: visible !important;
+}
 
-  @media (max-width: 768px) {
-    height: 350px;
-  }
+.empower-section .section-bg {
+  display: none;
+}
+
+.empower-section .section-content {
+  background: transparent;
 }
 </style>

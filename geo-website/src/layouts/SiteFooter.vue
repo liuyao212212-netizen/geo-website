@@ -70,10 +70,6 @@ const navigateTo = (routeName: string) => {
           <p class="company-desc">
             AI搜索时代的品牌全球化战略伙伴，让AI主动推荐你的品牌。
           </p>
-          <div class="qr-code">
-            <img src="/images/qrcode.jpg" alt="微信二维码" />
-            <span>关注公众号</span>
-          </div>
         </div>
 
         <!-- Nav Columns -->
@@ -108,9 +104,6 @@ const navigateTo = (routeName: string) => {
             <span class="company-info-label">总部</span>
             <span class="company-info-value">中国</span>
           </div>
-        </div>
-        <div class="company-cta">
-          <span>商务合作：欢迎垂询，共同探索AI搜索时代的品牌增长路径</span>
         </div>
       </div>
     </div>
@@ -177,30 +170,6 @@ const navigateTo = (routeName: string) => {
   }
 }
 
-.qr-code {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: $space-2;
-
-  img {
-    width: 100px;
-    height: 100px;
-    border-radius: $radius-md;
-    border: 1px solid $border-subtle;
-  }
-
-  span {
-    font-size: $text-xs;
-    color: $text-tertiary;
-  }
-
-  @media (max-width: 1024px) {
-    align-items: center;
-    margin: 0 auto;
-  }
-}
-
 .footer-title {
   font-size: $text-sm;
   font-weight: $font-semibold;
@@ -264,27 +233,6 @@ const navigateTo = (routeName: string) => {
 .company-info-value {
   font-size: $text-sm;
   color: $text-secondary;
-}
-
-.company-cta {
-  background: rgba(75, 51, 255, 0.08);
-  border: 1px solid rgba(75, 51, 255, 0.15);
-  border-radius: $radius-lg;
-  padding: $space-4 $space-6;
-  text-align: center;
-
-  span {
-    font-size: $text-sm;
-    color: $text-secondary;
-  }
-
-  @media (max-width: 768px) {
-    padding: $space-3 $space-4;
-
-    span {
-      font-size: $text-xs;
-    }
-  }
 }
 
 .footer-bottom {

@@ -7,6 +7,10 @@ import MagicRings from '../components/MagicRings.vue'
 import TimelineSteps from '../components/TimelineSteps.vue'
 import SplashCursor from '../components/SplashCursor.vue'
 
+const emit = defineEmits<{
+  openForm: []
+}>()
+
 // FAQ accordion state
 const openFaqIndex = ref<number | null>(null)
 
@@ -176,6 +180,12 @@ const faqItems = [
                 </div>
               </GlassSurface>
             </div>
+            <button class="whitepaper-claim-btn" @click="emit('openForm')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              免费领取白皮书
+            </button>
           </div>
 
           <div class="whitepaper-covers">
@@ -437,7 +447,7 @@ const faqItems = [
 .section-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/images/resources-bg.png');
+  background-image: url('/images/3a4e44575b374bdd116393335e4fbdfd.png');
   background-size: cover;
   background-position: center;
   // Gradient image (pink→purple→blue) — show colors subtly
@@ -499,12 +509,17 @@ const faqItems = [
   @media (max-width: 768px) {
     flex-direction: column;
     gap: $space-8;
+    align-items: stretch;
   }
 }
 
 .whitepaper-content {
   flex: 1;
   min-width: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .whitepaper-heading {
@@ -552,6 +567,37 @@ const faqItems = [
 
   &:hover {
     color: $text-primary;
+  }
+}
+
+.whitepaper-claim-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-6;
+  background: linear-gradient(135deg, $accent-purple 0%, #4c75ff 100%);
+  color: #fff;
+  font-size: $text-base;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: $space-6;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(75, 51, 255, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 }
 

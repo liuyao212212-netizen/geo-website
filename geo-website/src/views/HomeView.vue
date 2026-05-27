@@ -217,15 +217,6 @@ const goToTestimonial = (index: number) => {
   }
 }
 
-const nextTestimonial = () => {
-  const newIdx = Math.min(testimonials.length - 1, activeTestimonial.value + 1)
-  goToTestimonial(newIdx)
-}
-
-const prevTestimonial = () => {
-  const newIdx = Math.max(0, activeTestimonial.value - 1)
-  goToTestimonial(newIdx)
-}
 
 onMounted(() => {
   clientLogos.value = [
@@ -340,7 +331,8 @@ onMounted(() => {
               tag="h1"
               class="hero-title"
             >
-              让<span class="ai-highlight">AI</span>赋能<br />品牌全球增长
+              <span class="hero-title-line">让<span class="ai-highlight">AI</span>赋能</span>
+              <span class="hero-title-line">品牌全球增长</span>
             </Motion>
             <Motion
               :initial="{ opacity: 0, y: 30 }"
@@ -652,11 +644,6 @@ onMounted(() => {
           </div>
 
           <div class="carousel-nav">
-            <button class="carousel-nav__btn" @click="prevTestimonial" :disabled="activeTestimonial === 0">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 16l-5-5.5L13 5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
             <div class="carousel-nav__dots">
               <span
                 v-for="(_t, i) in testimonials"
@@ -665,11 +652,6 @@ onMounted(() => {
                 @click="goToTestimonial(i)"
               ></span>
             </div>
-            <button class="carousel-nav__btn" @click="nextTestimonial" :disabled="activeTestimonial >= testimonials.length - 1">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 5l5 5.5L7 16" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
           </div>
         </div>
       </div>
@@ -792,15 +774,16 @@ onMounted(() => {
 }
 
 .hero-title {
-  font-size: clamp(3.2rem, 10vw, 7rem);
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
   font-weight: 700;
-  line-height: 1.0;
+  line-height: 1.05;
   color: $text-primary;
   margin-bottom: $space-6;
   letter-spacing: -0.05em;
 
-  @media (min-width: 1024px) {
-    br { display: block; }
+  .hero-title-line {
+    display: block;
+    white-space: nowrap;
   }
 
   .ai-highlight {
@@ -1287,7 +1270,7 @@ onMounted(() => {
   position: relative;
   background:
     linear-gradient(rgba(3, 4, 10, 0.82), rgba(3, 4, 10, 0.88)),
-    url('/images/section-bg.png') center center / cover no-repeat;
+    url('/images/home-section-bg.png') center center / cover no-repeat;
   overflow: hidden;
 
   @media (min-width: 1024px) {
@@ -1775,14 +1758,14 @@ onMounted(() => {
 }
 
 .testimonial-slide {
-  flex: 0 0 100%;
+  flex: 0 0 85%;
   scroll-snap-align: center;
   padding: 0 8px;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
-    flex: 0 0 640px;
-    padding: 0 calc((100% - 640px) / 2);
+    flex: 0 0 calc(50% - 8px);
+    padding: 0;
   }
 }
 

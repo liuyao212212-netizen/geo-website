@@ -3,7 +3,7 @@
 ## 项目信息
 - **项目名称**: 智优康赛GEO战略服务商官网
 - **工作目录**: `/Users/rose/WorkBuddy/2026-05-25-14-09-56/geo-website/`
-- **技术栈**: Vue 3.5 + TypeScript + Vite 5 + Vue Router 4 + SCSS + ogl + motion-v + SVG Filters
+- **技术栈**: Vue 3.5 + TypeScript + Vite 5 + Vue Router 4 + SCSS + ogl + motion-v + gsap + SVG Filters
 - **设计风格**: 深空黑底色(#03040a) + 紫色主色调(#4b33ff) + GlassSurface光学折射 + Orb WebGL背景 + Aurora极光标题背景 + BlurText逐词模糊入场 + FloatingLines浮动光线
 - **部署目标**: GitHub Pages (base: './')
 
@@ -17,12 +17,28 @@
 - **间距**: 使用变量体系，section间距96px/64px(mobile)
 - **⚠️ 背景图规则**: 用户说"换背景图"默认是换整个板块的背景，不是只换标题区域。除非用户明确说"只换标题背景"，否则一律全section覆盖
 
+### 分页面标题区统一规范（所有子页面必须遵守）
+**布局**: 白色logo (`logo-white.svg`) + 竖线分隔 + BlurText渐变标题
+```
+<section class="page-hero">
+  <MagicRings ... />  <!-- Three.js光环背景 -->
+  <div class="page-hero-content container">
+    <div class="page-hero-brand">
+      <img src="/images/logo-white.svg" alt="智优康赛" class="page-hero-logo" />
+      <span class="page-hero-divider" />
+      <BlurText text="页面标题" ... className="page-hero-title" />
+    </div>
+  </div>
+</section>
+```
+**注意**: 无副标题，只用logo+标题。首页Hero用OrbBackground，分页面标题区用MagicRings。
+
 ## 页面结构（6页）
 1. **首页** (index) - ✅ 已完成
-2. **解决方案** (solutions) - 🏗️ 占位页 - 全方位GEO/主流平台/优化策略/GEO法则/GEO成效
-3. **客户案例** (cases) - 🏗️ 占位页 - 数据案例/客户评价/合作伙伴
-4. **智优平台** (platform) - ✅ 已完成 - 智优系统(GeoWorkflow自动播放垂直工作流)/核心功能(左标题+右5步时间线)/系统优势(4大数据卡片)/系统赋能(CircularGallery 3D弧形画廊)
-5. **关于我们** (about) - 🏗️ 占位页 - 公司介绍/行业背书/核心业务/权威展示
+2. **解决方案** (solutions) - ✅ 已完成 - 全方位GEO(4数据卡片+概述)/主流平台(12个pill)/优化策略(被找到→被采纳→被认可三部曲)/GEO 3C法则(理解/信任/推荐)/全栈服务(tab切换6类)/GEO成效(4数据卡片)/CTA
+3. **客户案例** (cases) - ✅ 已完成 - 成效数据(6个GlassSurface卡片)/客户评价(2张引用卡片:栖息地+得实)/合作伙伴(35个logo网格)/CTA
+4. **智优平台** (platform) - ✅ 已完成 - 智优系统(GeoWorkflow自动播放垂直工作流)/核心功能(左标题+右5步时间线)/系统优势(4大数据卡片，无描述文字)/系统赋能(BentoGrid gsap粒子聚光灯网格，6行业卡片，只写文字不放图片)
+5. **关于我们** (about) - ✅ 已完成 - Hero(MagicRings+logo-white+标题)/公司介绍(双栏)/发展历程(ScrollStack滚动堆叠5年份卡片)/权威背书(渠成照片+介绍)/核心团队(Uiverse资料卡+数据亮点)/客户案例(35个logo网格)/CTA
 6. **资源中心** (resources) - ✅ 已完成 - GEO白皮书/GEO联盟(CGIA)/GEO常见问题(手风琴折叠)
 
 ## 素材路径
@@ -32,7 +48,8 @@
 - 二维码: `/public/images/qrcode.jpg`
 - 白皮书封面: `/public/images/whitepaper-1.png`, `/public/images/whitepaper-2.png`
 - GEO联盟二维码: `/public/images/qr-cgia.png`
-- 客户Logo: `/public/images/clients/客户logo/` (35个透明PNG)
+- 客户Logo: `/public/images/clients/` (35个透明PNG)
+- 渠成照片: `/public/images/team/qu-cheng.png`
 
 ## 重要决策记录
 - 2026-05-25: 采用Vue3而非纯HTML，为后续多页面和交互预留扩展性
@@ -70,4 +87,26 @@
   - 删除system-header标题区（FloatingLines+文字全部删除）
   - 6能力卡片删除desc说明文字
   - 删除6个能力卡片网格，板块一只保留GeoWorkflow工作流演示
-  - 系统赋能板块从6行业卡片网格→CircularGallery(ogl WebGL 3D弧形画廊)，6行业图片+文字
+  - 系统赋能板块从6行业卡片网格→CircularGallery→CardSwap→BentoGrid(gsap粒子+聚光灯+磁性+点击涟漪)
+  - BentoGrid组件：6行业卡片网格布局，移动端1列→平板2列→桌面4列，动画移动端自动禁用
+  - glowColor改紫色75,51,255匹配品牌色调，只写行业文字不放图片
+  - 安装gsap依赖
+  - 删除所有板块的描述说明文字（advantages/coreFunctions/TimelineSteps的desc字段和BlurText）
+- 2026-05-26: 关于我们页面完成：参考cohere.com/about，6板块（Hero/公司介绍/里程碑/权威背书/团队/客户/CTA）
+  - 里程碑时间线：5节点左右交替，GlassSurface卡片，紫色发光节点，移动端左对齐
+  - 权威背书：渠成照片+3段完整介绍文字，紫色光晕效果
+  - 客户案例：35个logo网格，7→5→3→2列响应式，白色滤镜+hover高亮
+  - ScrollReveal滚动动画，IntersectionObserver触发
+  - 素材：渠成照片→/public/images/team/qu-cheng.png，35个客户logo→/public/images/clients/
+- 2026-05-26: 关于我们核心团队板块升级：从圆形头像卡片→PCCard全息3D资料卡→Uiverse风格资料卡
+  - 当前使用Uiverse风格资料卡：头像区+底部信息栏(mini头像+handle+在线状态)+邮件按钮+姓名/职位
+  - 暗色主题适配：紫色渐变背景边框、毛玻璃信息栏、渐变文字姓名
+  - 删除PCCard组件导入，直接在AboutView内实现
+  - 渠成信息：name="渠成", title="创始人/董事长兼CEO", handle="@qucheng", status="GEO先行者"
+  - 了解更多按钮跳转/contact页面
+  - 保留右侧4个数据亮点卡片(18年/3专利/20+海外/AIIA)
+- 2026-05-26: 关于我们发展历程重构为年份切换式布局（参考tec-do.com/about）
+  - 左侧年份导航栏（倒序，sticky，点击切换高亮）+ 右侧内容区（大年份数字+事件列表）
+  - 移动端：横向滚动年份导航+下方内容区
+  - 5个年份：2026/2025/2022/2017/2008，每个年份4条事件（bullet points）
+

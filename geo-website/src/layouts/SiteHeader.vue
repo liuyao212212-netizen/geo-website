@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
@@ -79,6 +79,26 @@ const isActive = (routeName: string) => {
   return route.name === routeName
 }
 
+// Lock/unlock body scroll when mobile menu opens/closes
+let scrollY = 0
+watch(isMobileMenuOpen, (val) => {
+  if (val) {
+    scrollY = window.scrollY
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.left = '0'
+    document.body.style.right = '0'
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.left = ''
+    document.body.style.right = ''
+    document.body.style.overflow = ''
+    window.scrollTo(0, scrollY)
+  }
+})
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   document.addEventListener('click', closeDropdown)
@@ -87,6 +107,12 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
   document.removeEventListener('click', closeDropdown)
+  // Clean up body styles if component unmounts while menu is open
+  document.body.style.position = ''
+  document.body.style.top = ''
+  document.body.style.left = ''
+  document.body.style.right = ''
+  document.body.style.overflow = ''
 })
 
 const emit = defineEmits<{
@@ -169,7 +195,10 @@ const emit = defineEmits<{
     </div>
 
     <!-- Mobile Menu -->
-    <div :class="['mobile-menu', { open: isMobileMenuOpen }]">
+    <div
+      :class="['mobile-menu', { open: isMobileMenuOpen }]"
+      @touchmove.prevent
+    >
       <nav class="mobile-nav">
         <div v-for="link in navLinks" :key="link.label" class="mobile-nav-group">
           <a
@@ -216,9 +245,6 @@ const emit = defineEmits<{
         <div class="mobile-info-item">
           <span class="mobile-info-label">总部</span>
           <span class="mobile-info-value">中国</span>
-        </div>
-        <div class="mobile-info-cta">
-          商务合作：欢迎垂询，共同探索AI搜索时代的品牌增长路径
         </div>
       </div>
     </div>
@@ -417,7 +443,8 @@ const emit = defineEmits<{
   width: 40px;
   height: 40px;
   @include flex-center;
-  z-index: 10;
+  position: relative;
+  z-index: 1000;
 }
 
 .hamburger {
@@ -459,16 +486,17 @@ const emit = defineEmits<{
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(3, 4, 10, 0.98);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: #03040a;
   padding: 80px $container-padding $space-8;
   transform: translateX(100%);
   transition: transform 0.3s ease;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
-  z-index: 5;
+  z-index: 999;
+  isolation: isolate;
 
   &.open {
     transform: translateX(0);
@@ -575,15 +603,4 @@ const emit = defineEmits<{
   line-height: 1.5;
 }
 
-.mobile-info-cta {
-  margin-top: $space-2;
-  padding: $space-3 $space-4;
-  background: rgba(75, 51, 255, 0.06);
-  border: 1px solid rgba(75, 51, 255, 0.12);
-  border-radius: 8px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.6;
-  text-align: center;
-}
 </style>
