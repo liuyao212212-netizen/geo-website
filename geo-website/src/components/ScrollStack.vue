@@ -258,7 +258,7 @@ export const ScrollStackItem = defineComponent({
         'div',
         {
           class:
-            `scroll-stack-card relative w-full p-10 rounded-[32px] box-border origin-top will-change-transform ${props.itemClassName}`.trim(),
+            `scroll-stack-card relative w-full min-h-80 my-8 p-10 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform ${props.itemClassName}`.trim(),
           style: {
             backfaceVisibility: 'hidden',
             transformStyle: 'preserve-3d'
@@ -273,7 +273,7 @@ export const ScrollStackItem = defineComponent({
 <template>
   <div
     ref="scrollerRef"
-    :class="['relative w-full overflow-y-auto overflow-x-visible', className]"
+    :class="['relative w-full h-full overflow-y-auto overflow-x-visible', className]"
     :style="{
       overscrollBehavior: 'contain',
       WebkitOverflowScrolling: 'touch',
@@ -283,7 +283,7 @@ export const ScrollStackItem = defineComponent({
       willChange: 'scroll-position'
     }"
   >
-    <div class="px-6 md:px-16 pt-[15vh] pb-[30rem] min-h-screen scroll-stack-inner">
+    <div class="px-20 pt-[20vh] pb-[50rem] min-h-screen scroll-stack-inner">
       <slot />
       <!-- Spacer so the last pin can release cleanly -->
       <div class="w-full h-px scroll-stack-end" />

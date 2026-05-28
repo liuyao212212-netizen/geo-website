@@ -1,24 +1,38 @@
 <template>
   <p ref="rootRef" class="flex flex-wrap blur-text" :class="className">
-    <Motion
-      v-for="(segment, index) in elements"
-      :key="index"
-      tag="span"
-      :initial="fromSnapshot"
-      :animate="inView ? buildKeyframes(fromSnapshot, toSnapshots) : fromSnapshot"
-      :transition="getTransition(index)"
-      @animation-complete="handleAnimationComplete(index)"
-      style="display: inline-block; will-change: transform, filter, opacity"
-    >
-      {{ segment === ' ' ? '\u00A0' : segment }}
-      <template v-if="animateBy === 'words' && index < elements.length - 1">&nbsp;</template>
-    </Motion>
+    <!-- Motion 组件只在 ready 后才渲染，确保 inView 已确定，避免动画触发错过 -->
+    <template v-if="ready">
+      <Motion
+        v-for="(segment, index) in elements"
+        :key="`${segment}-${index}`"
+        tag="span"
+        :initial="fromSnapshot"
+        :animate="inView ? buildKeyframes(fromSnapshot, toSnapshots) : fromSnapshot"
+        :transition="getTransition(index)"
+        @animation-complete="handleAnimationComplete(index)"
+        style="display: inline-block; will-change: transform, filter, opacity"
+      >
+        {{ segment === ' ' ? '\u00A0' : segment }}
+        <template v-if="animateBy === 'words' && index < elements.length - 1">&nbsp;</template>
+      </Motion>
+    </template>
+    <!-- ready 前渲染不可见占位文本，保持布局稳定 -->
+    <template v-else>
+      <span
+        v-for="(segment, index) in elements"
+        :key="`ph-${segment}-${index}`"
+        style="display: inline-block; opacity: 0; filter: blur(10px);"
+      >
+        {{ segment === ' ' ? '\u00A0' : segment }}
+        <template v-if="animateBy === 'words' && index < elements.length - 1">&nbsp;</template>
+      </span>
+    </template>
   </p>
 </template>
 
 <script setup lang="ts">
 import { Motion, type Transition } from 'motion-v';
-import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue';
+import { computed, nextTick, onActivated, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue';
 
 type BlurTextProps = {
   text?: string;
@@ -61,30 +75,84 @@ const props = withDefaults(defineProps<BlurTextProps>(), {
 });
 
 const inView = ref(false);
+const ready = ref(false);
 const rootRef = useTemplateRef<HTMLParagraphElement>('rootRef');
 let observer: IntersectionObserver | null = null;
 
-onMounted(() => {
+const setupObserver = () => {
   if (!rootRef.value) return;
 
+  // Immediate check: if element is already in viewport, trigger right away
+  const rect = rootRef.value.getBoundingClientRect();
+  const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+  if (isVisible) {
+    inView.value = true;
+    ready.value = true;
+    return;
+  }
+
+  // Set up IntersectionObserver for scroll-triggered visibility
   observer = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
         inView.value = true;
-        observer?.unobserve(rootRef.value as Element);
+        ready.value = true;
+        if (rootRef.value) observer?.unobserve(rootRef.value);
       }
     },
     {
-      threshold: props.threshold,
+      threshold: 0,
       rootMargin: props.rootMargin
     }
   );
 
   observer.observe(rootRef.value);
+};
+
+onMounted(() => {
+  // Wait for DOM to fully settle after route transition / lazy chunk load
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      setupObserver();
+    });
+  });
+
+  // Fallback: force ready after 600ms if still not triggered
+  // (handles race conditions during route transitions, slow chunk loads, etc.)
+  const fallbackTimer = setTimeout(() => {
+    if (!ready.value) {
+      // If element is in viewport, trigger animation
+      if (rootRef.value) {
+        const r = rootRef.value.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          inView.value = true;
+        }
+      }
+      // Always mark ready so Motion renders (even if still hidden, it'll animate when scrolled into view)
+      ready.value = true;
+    }
+  }, 600);
+
+  onBeforeUnmount(() => {
+    clearTimeout(fallbackTimer);
+  });
+});
+
+onActivated(() => {
+  // Re-trigger when kept-alive component is activated
+  // Reset state first, then re-run visibility check
+  inView.value = false;
+  ready.value = false;
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      setupObserver();
+    });
+  });
 });
 
 onBeforeUnmount(() => {
   observer?.disconnect();
+  observer = null;
 });
 
 const elements = computed(() => (props.animateBy === 'words' ? props.text.split(' ') : props.text.split('')));

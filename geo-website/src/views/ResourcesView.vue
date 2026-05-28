@@ -1,15 +1,60 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import GlassSurface from '../components/GlassSurface.vue'
 import BlurText from '../components/BlurText.vue'
+import { Motion } from 'motion-v'
 import BookCard from '../components/BookCard.vue'
 import MagicRings from '../components/MagicRings.vue'
-import TimelineSteps from '../components/TimelineSteps.vue'
-import SplashCursor from '../components/SplashCursor.vue'
+import SoftAurora from '../components/SoftAurora.vue'
+import PageCTA from '../components/PageCTA.vue'
 
 const emit = defineEmits<{
   openForm: []
 }>()
+
+// Cyber Card 3D tilt
+const cyberCardCanvas = ref<HTMLElement | null>(null)
+const cyberCard = ref<HTMLElement | null>(null)
+
+const onCyberCardMouseMove = (e: MouseEvent) => {
+  const canvas = cyberCardCanvas.value
+  const card = cyberCard.value
+  if (!canvas || !card) return
+
+  const rect = canvas.getBoundingClientRect()
+  const x = e.clientX - rect.left
+  const y = e.clientY - rect.top
+  const centerX = rect.width / 2
+  const centerY = rect.height / 2
+  const rotateX = ((y - centerY) / centerY) * -15
+  const rotateY = ((x - centerX) / centerX) * 15
+
+  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+
+  // Update glare
+  const glare = card.querySelector('.card-glare') as HTMLElement
+  if (glare) {
+    glare.style.background = `linear-gradient(${135 + rotateY * 3}deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%)`
+    glare.style.opacity = '1'
+    glare.style.left = `${x - rect.width}px`
+    glare.style.top = `${y - rect.height}px`
+  }
+}
+
+const onCyberCardMouseLeave = () => {
+  const card = cyberCard.value
+  if (!card) return
+  card.style.transform = 'rotateX(0deg) rotateY(0deg)'
+  card.style.transition = 'transform 0.5s ease'
+  setTimeout(() => {
+    if (card) card.style.transition = ''
+  }, 500)
+
+  const glare = card.querySelector('.card-glare') as HTMLElement
+  if (glare) {
+    glare.style.opacity = '0'
+  }
+}
 
 // FAQ accordion state
 const openFaqIndex = ref<number | null>(null)
@@ -22,54 +67,53 @@ const toggleFaq = (index: number) => {
 const whitepapers = [
   {
     title: 'GEO白皮书',
-    image: '/images/whitepaper-1.png',
+    image: '/images/whitepaper-1.webp',
     desc: '生成式引擎优化（GEO）全面指南'
   },
   {
     title: 'GEO实战手册',
-    image: '/images/whitepaper-2.png',
+    image: '/images/whitepaper-2.webp',
     desc: '品牌AI搜索优化的落地方法论'
   }
 ]
 
-// CGIA Alliance benefits
-const allianceBenefits = [
-  {
-    icon: '🏆',
-    title: '证书授牌',
-    desc: '获得中国GEO创新联盟官方认证证书，彰显行业权威地位'
-  },
-  {
-    icon: '🔧',
-    title: '技术工具',
-    desc: '优先使用联盟GEO技术工具平台，提升优化效率'
-  },
-  {
-    icon: '📢',
-    title: '媒体传播',
-    desc: '联盟媒体矩阵优先传播报道，扩大品牌声量'
-  },
-  {
-    icon: '📊',
-    title: 'GEO周报',
-    desc: '每周获取行业GEO趋势洞察报告，把握最新动态'
-  },
-  {
-    icon: '✍️',
-    title: '专栏曝光',
-    desc: '联盟官方专栏优先展示企业品牌内容'
-  },
-  {
-    icon: '📖',
-    title: '白皮书',
-    desc: '优先参与联盟年度白皮书编撰，树立行业标杆'
-  },
-  {
-    icon: '🤝',
-    title: '私享会',
-    desc: '定期参加联盟高端私享会，链接行业核心资源'
-  }
+// CGIA Core Benefits (7 items from poster)
+const cgiaBenefits = [
+  '联盟证书/授牌',
+  '品牌专栏曝光',
+  '联合署名发布',
+  '全媒体矩阵传播',
+  'GEO全球周报',
+  '专属线下私享会',
+  '技术工具池',
 ]
+
+const benefitVisibility = ref<boolean[]>(new Array(7).fill(false))
+let benefitObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  benefitObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const idx = Number((entry.target as HTMLElement).dataset.index)
+        if (!isNaN(idx) && entry.isIntersecting) {
+          benefitVisibility.value[idx] = true
+        }
+      })
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+  )
+
+  setTimeout(() => {
+    document.querySelectorAll('.benefit-pill').forEach((el) => {
+      benefitObserver?.observe(el)
+    })
+  }, 200)
+})
+
+onBeforeUnmount(() => {
+  benefitObserver?.disconnect()
+})
 
 // FAQ items
 const faqItems = [
@@ -181,10 +225,13 @@ const faqItems = [
               </GlassSurface>
             </div>
             <button class="whitepaper-claim-btn" @click="emit('openForm')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              <svg class="button__icon" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" d="M0 0h24v24H0z" stroke="none"/>
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/>
+                <path d="M7 11l5 5l5 -5"/>
+                <path d="M12 4l0 12"/>
               </svg>
-              免费领取白皮书
+              <span class="button__text">免费领取白皮书</span>
             </button>
           </div>
 
@@ -217,7 +264,23 @@ const faqItems = [
       <div class="section-bg" />
       <div class="section-content">
         <div class="cgia-header">
-          <SplashCursor class="cgia-fluid-bg" />
+          <SoftAurora
+            class="cgia-aurora-bg"
+            :speed="0.6"
+            :scale="1.5"
+            :brightness="1"
+            :color1="'#4b33ff'"
+            :color2="'#00d4ff'"
+            :noise-frequency="2.5"
+            :noise-amplitude="1"
+            :band-height="0.5"
+            :band-spread="1"
+            :octave-decay="0.1"
+            :layer-offset="0"
+            :color-speed="1"
+            :enable-mouse-interaction="true"
+            :mouse-influence="0.25"
+          />
           <div class="cgia-header-text">
             <h2 class="cgia-title">CGIA</h2>
             <BlurText
@@ -232,25 +295,22 @@ const faqItems = [
         </div>
 
       <div class="container">
-        <div class="alliance-layout">
-          <!-- Left: Title + Description -->
-          <div class="alliance-left">
-            <div class="alliance-left-content">
-              <BlurText
-                text="核心权益"
-                :delay="60"
-                animateBy="words"
-                direction="top"
-                className="alliance-left-title"
-                :stepDuration="0.4"
-              />
-            </div>
-          </div>
-
-          <!-- Right: Timeline Steps -->
-          <div class="alliance-right">
-            <TimelineSteps :steps="allianceBenefits" />
-          </div>
+        <!-- CGIA Benefits Grid -->
+        <div class="benefits-grid">
+          <Motion
+            v-for="(title, idx) in cgiaBenefits"
+            :key="idx"
+            :data-index="idx"
+            tag="div"
+            class="benefit-pill"
+            :class="{ 'benefit-pill--alt': idx % 2 === 1 }"
+            :initial="{ scale: 0.7, opacity: 0, y: 20 }"
+            :animate="benefitVisibility[idx] ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.7, opacity: 0, y: 20 }"
+            :transition="{ duration: 0.4, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }"
+          >
+            <span class="benefit-dot"></span>
+            <span class="benefit-title">{{ title }}</span>
+          </Motion>
         </div>
 
         <!-- Flip Cards + QR Code -->
@@ -280,12 +340,46 @@ const faqItems = [
                 </div>
               </div>
             </div>
-            <!-- QR Code Glass Card -->
-            <div class="qr-glass-card">
-              <div class="qr-glass-inner">
-                <img src="/images/qr-cgia-v2.png" alt="加入CGIA" class="qr-glass-img" />
-                <span class="qr-glass-label">扫码加入 CGIA</span>
+            <!-- Cyber Card QR Code -->
+            <div class="cyber-card-wrapper">
+              <div class="cyber-card-canvas" ref="cyberCardCanvas" @mousemove="onCyberCardMouseMove" @mouseleave="onCyberCardMouseLeave">
+                <div class="tracker tr-1"></div>
+                <div class="tracker tr-2"></div>
+                <div class="tracker tr-3"></div>
+                <div class="tracker tr-4"></div>
+                <div class="tracker tr-5"></div>
+                <div class="tracker tr-6"></div>
+                <div class="tracker tr-7"></div>
+                <div class="tracker tr-8"></div>
+                <div class="tracker tr-9"></div>
+                <div class="cyber-card" ref="cyberCard">
+                  <div class="card-content">
+                    <div class="card-glare"></div>
+                    <div class="cyber-lines">
+                      <span></span><span></span><span></span><span></span>
+                    </div>
+                    <img src="/images/qr-cgia-v2.png" alt="加入CGIA" class="cyber-qr-img" />
+                    <div class="title">CGIA<br />联盟</div>
+                    <div class="glowing-elements">
+                      <div class="glow-1"></div>
+                      <div class="glow-2"></div>
+                      <div class="glow-3"></div>
+                    </div>
+                    <div class="subtitle">
+                      <span>扫码加入</span>
+                      <span class="highlight">CGIA</span>
+                    </div>
+                    <div class="card-particles">
+                      <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="corner-elements">
+                      <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="scan-line"></div>
+                  </div>
+                </div>
               </div>
+              <span class="cyber-card-scan-text">扫码加入</span>
             </div>
           </div>
         </div>
@@ -362,6 +456,8 @@ const faqItems = [
       </div>
       </div>
     </section>
+
+    <PageCTA @openForm="emit('openForm')" />
   </div>
 </template>
 
@@ -447,7 +543,7 @@ const faqItems = [
 .section-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/images/3a4e44575b374bdd116393335e4fbdfd.png');
+  background-image: url('/images/section-bg-new.jpg');
   background-size: cover;
   background-position: center;
   // Gradient image (pink→purple→blue) — show colors subtly
@@ -573,31 +669,51 @@ const faqItems = [
 .whitepaper-claim-btn {
   display: inline-flex;
   align-items: center;
-  gap: $space-3;
-  padding: $space-3 $space-6;
-  background: linear-gradient(135deg, $accent-purple 0%, #4c75ff 100%);
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, $accent-purple 0%, $accent-blue 100%);
+  border: 1px solid rgba(75, 51, 255, 0.5);
+  border-radius: 12px;
   color: #fff;
   font-size: $text-base;
   font-weight: 600;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: $space-6;
+  box-shadow: 0 4px 20px rgba(75, 51, 255, 0.25);
+
+  .button__icon {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .button__text {
+    letter-spacing: 0.5px;
+  }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(75, 51, 255, 0.35);
+    border-color: rgba(75, 51, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(75, 51, 255, 0.4);
+
+    .button__icon {
+      transform: translateY(2px);
+    }
   }
 
   &:active {
-    transform: translateY(0) scale(0.98);
+    transform: scale(0.98);
   }
 
-  svg {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
+  @media (max-width: 768px) {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
   }
 }
 
@@ -643,7 +759,7 @@ const faqItems = [
   max-width: 180px;
 }
 
-// ========== CGIA HEADER with SplashCursor fluid ==========
+// ========== CGIA HEADER with SoftAurora ==========
 .cgia-header {
   position: relative;
   min-height: 280px;
@@ -657,11 +773,10 @@ const faqItems = [
   }
 }
 
-.cgia-fluid-bg {
+.cgia-aurora-bg {
   position: absolute !important;
   inset: 0;
   z-index: 0;
-  pointer-events: auto;
 }
 
 .cgia-header-text {
@@ -690,59 +805,83 @@ const faqItems = [
 
 .cgia-subtitle {
   font-size: clamp(0.875rem, 2vw, 1.125rem) !important;
-  font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500 !important;
+  background: linear-gradient(135deg, #4b33ff 0%, #4c75ff 50%, #00d4ff 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
   letter-spacing: 0.05em !important;
   text-align: center !important;
+  filter: drop-shadow(0 0 8px rgba(75, 51, 255, 0.4));
 }
 
-// ========== ALLIANCE - Left Title + Right Timeline ==========
-.alliance-layout {
+// ========== CGIA Benefits Grid ==========
+.benefits-grid {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: $space-12;
-  align-items: start;
-  margin-bottom: $space-12;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+  max-width: 720px;
+  margin: 0 auto $space-12;
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     grid-template-columns: 1fr;
-    gap: $space-6;
+    gap: $space-3;
     margin-bottom: $space-8;
   }
 }
 
-.alliance-left {
-  position: sticky;
-  top: 120px;
+.benefit-pill {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(75, 51, 255, 0.85) 0%, rgba(76, 117, 255, 0.8) 50%, rgba(0, 212, 255, 0.75) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
 
-  @media (max-width: 768px) {
-    position: static;
-    top: auto;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 32px rgba(75, 51, 255, 0.3);
+
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+
+  &--alt {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.75) 0%, rgba(76, 117, 255, 0.8) 50%, rgba(75, 51, 255, 0.85) 100%);
   }
 }
 
-.alliance-left-content {
-  display: flex;
-  flex-direction: column;
-  gap: $space-4;
+.benefit-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
 }
 
-.alliance-left-title {
-  font-size: clamp(1.5rem, 3vw, 2rem) !important;
-  font-weight: 700 !important;
-  color: $text-primary !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.alliance-left-desc {
-  font-size: $text-sm !important;
-  color: $text-secondary !important;
-  line-height: 1.7 !important;
-}
-
-.alliance-right {
-  min-width: 0;
+.benefit-title {
+  font-size: $text-base;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
 }
 
 // Join cards + QR row
@@ -857,140 +996,287 @@ const faqItems = [
 }
 
 // QR Code Glass Card
-.qr-glass-card {
-  position: relative;
-  width: 220px;
-  height: 280px;
-  border-radius: $radius-lg;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  overflow: hidden;
+// ========== Cyber Card QR (by 00Kubi, adapted) ==========
+.cyber-card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: $space-4;
-  padding: $space-5;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: $space-3;
+}
 
-  &::before {
-    content: '';
+.cyber-card-canvas {
+  position: relative;
+  width: 220px;
+  height: 300px;
+  perspective: 800px;
+  cursor: pointer;
+
+  .tracker {
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .tr-1 { width: 20px; height: 20px; top: -10px; left: -10px; }
+  .tr-2 { width: 20px; height: 20px; top: -10px; right: -10px; }
+  .tr-3 { width: 20px; height: 20px; bottom: -10px; left: -10px; }
+  .tr-4 { width: 20px; height: 20px; bottom: -10px; right: -10px; }
+  .tr-5 { width: 20px; height: 20px; top: 50%; left: -10px; transform: translateY(-50%); }
+  .tr-6 { width: 20px; height: 20px; top: 50%; right: -10px; transform: translateY(-50%); }
+  .tr-7 { width: 20px; height: 20px; top: -10px; left: 50%; transform: translateX(-50%); }
+  .tr-8 { width: 20px; height: 20px; bottom: -10px; left: 50%; transform: translateX(-50%); }
+  .tr-9 { width: 20px; height: 20px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+  &:hover .tracker {
+    box-shadow: 0 0 20px 5px rgba(75, 51, 255, 0.5);
+    background: rgba(75, 51, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 270px;
+  }
+}
+
+.cyber-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
+
+  .card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #0d0d1a, #1a0a2e);
+    border: 1px solid rgba(75, 51, 255, 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 16px;
+  }
+
+  .card-glare {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    filter: blur(20px);
+  }
+
+  .cyber-lines {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(75, 51, 255, 0.08) 0%,
-      rgba(76, 117, 255, 0.04) 50%,
-      rgba(0, 212, 255, 0.06) 100%
-    );
-    border-radius: inherit;
-  }
+    pointer-events: none;
+    overflow: hidden;
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.04) 50%,
-      transparent 60%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-  }
+    span {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(75, 51, 255, 0.15), transparent);
+      height: 1px;
+      width: 100%;
 
-  &:hover {
-    border-color: rgba(75, 51, 255, 0.3);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 32px rgba(75, 51, 255, 0.15);
-
-    &::after {
-      transform: translateX(100%);
+      &:nth-child(1) { top: 20%; animation: cyberLineMove 3s linear infinite; }
+      &:nth-child(2) { top: 40%; animation: cyberLineMove 4s linear infinite 1s; }
+      &:nth-child(3) { top: 60%; animation: cyberLineMove 3.5s linear infinite 0.5s; }
+      &:nth-child(4) { top: 80%; animation: cyberLineMove 4.5s linear infinite 1.5s; }
     }
   }
 
-  @media (max-width: 768px) {
+  .cyber-qr-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: rgba(75, 51, 255, 0.12);
+    padding: 6px;
+    position: relative;
+    z-index: 5;
+    filter: invert(1) sepia(1) hue-rotate(220deg) saturate(2.5) brightness(0.85) contrast(1.1);
+    transition: filter 0.3s ease;
+
+    @media (max-width: 768px) {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .cyber-card:hover .cyber-qr-img {
+    filter: invert(1) sepia(1) hue-rotate(220deg) saturate(3.5) brightness(0.95) contrast(1.2);
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 5;
+    background: linear-gradient(135deg, #a78bfa, #4c75ff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    display: flex;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 5;
+
+    .highlight {
+      color: #a78bfa;
+      font-weight: 700;
+    }
+  }
+
+  .glowing-elements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    .glow-1 {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(75, 51, 255, 0.15);
+      filter: blur(30px);
+      top: -20px;
+      right: -20px;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    .glow-2 {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(0, 212, 255, 0.1);
+      filter: blur(25px);
+      bottom: 20px;
+      left: -10px;
+      animation: glowPulse 4s ease-in-out infinite 1s;
+    }
+
+    .glow-3 {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(76, 117, 255, 0.1);
+      filter: blur(20px);
+      bottom: -10px;
+      right: 30px;
+      animation: glowPulse 3.5s ease-in-out infinite 0.5s;
+    }
+  }
+
+  .card-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(167, 139, 250, 0.6);
+      border-radius: 50%;
+      animation: particleFloat 4s ease-in-out infinite;
+
+      &:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+      &:nth-child(2) { top: 25%; left: 75%; animation-delay: 0.5s; }
+      &:nth-child(3) { top: 55%; left: 15%; animation-delay: 1s; }
+      &:nth-child(4) { top: 65%; left: 80%; animation-delay: 1.5s; }
+      &:nth-child(5) { top: 80%; left: 40%; animation-delay: 2s; }
+      &:nth-child(6) { top: 35%; left: 50%; animation-delay: 2.5s; }
+    }
+  }
+
+  .corner-elements {
+    position: absolute;
+    inset: 8px;
+    pointer-events: none;
+
+    span {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: rgba(75, 51, 255, 0.4);
+
+      &:nth-child(1) { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+      &:nth-child(2) { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+      &:nth-child(3) { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+      &:nth-child(4) { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+    }
+  }
+
+  .scan-line {
+    position: absolute;
+    left: 0;
     width: 100%;
-    max-width: 280px;
-    height: auto;
-    padding: $space-6;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(75, 51, 255, 0.4), transparent);
+    animation: scanLine 3s linear infinite;
+    pointer-events: none;
+    z-index: 6;
   }
 }
 
-.qr-glass-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $space-4;
-}
-
-.qr-glass-img {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  border-radius: $radius-md;
-  background: #fff;
-  padding: 8px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  @media (max-width: 768px) {
-    width: 160px;
-    height: 160px;
-  }
-}
-
-.qr-glass-label {
+.cyber-card-scan-text {
   font-size: 14px;
   font-weight: 600;
   color: $text-primary;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  text-align: center;
 }
 
-// ========== FAQ (Accordion) - Left Title + Right List ==========
+@keyframes cyberLineMove {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  25% { opacity: 1; }
+  50% { transform: translateY(-10px) translateX(5px); opacity: 0.6; }
+  75% { opacity: 0.3; }
+}
+
+@keyframes scanLine {
+  0% { top: -2px; }
+  100% { top: 100%; }
+}
+
+// ========== FAQ (Accordion) - Centered Single Column ==========
 .faq-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: $space-12;
-  align-items: start;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: $space-6;
-  }
-}
-
-.faq-left {
-  position: sticky;
-  top: 120px;
-
-  @media (max-width: 768px) {
-    position: static;
-    top: auto;
-  }
-}
-
-.faq-left-title {
-  font-size: clamp(1.5rem, 3vw, 2rem) !important;
-  font-weight: 700 !important;
-  color: $text-primary !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.faq-right {
-  min-width: 0;
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .faq-list {

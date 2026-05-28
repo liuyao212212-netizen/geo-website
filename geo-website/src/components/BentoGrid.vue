@@ -536,12 +536,12 @@ const cardElements = ref<HTMLDivElement[]>([]);
 const shouldDisableAnimations = computed(() => props.disableAnimations || isMobile.value);
 
 const defaultCards: BentoCardProps[] = [
-  { color: '#0a0a1a', title: '企业品牌', description: 'GEO全面覆盖', label: 'Brand' },
-  { color: '#0a0a1a', title: '电商零售', description: 'AI推荐优化', label: 'E-Commerce' },
-  { color: '#0a0a1a', title: 'B2B服务', description: '语义占位策略', label: 'B2B' },
-  { color: '#0a0a1a', title: '医疗健康', description: '权威内容训练', label: 'Healthcare' },
-  { color: '#0a0a1a', title: '教育科技', description: '知识图谱构建', label: 'EdTech' },
-  { color: '#0a0a1a', title: '金融服务', description: '合规语义优化', label: 'Finance' }
+  { color: '#12122a', title: '企业品牌', description: 'GEO全面覆盖', label: 'Brand' },
+  { color: '#12122a', title: '电商零售', description: 'AI推荐优化', label: 'E-Commerce' },
+  { color: '#12122a', title: 'B2B服务', description: '语义占位策略', label: 'B2B' },
+  { color: '#12122a', title: '医疗健康', description: '权威内容训练', label: 'Healthcare' },
+  { color: '#12122a', title: '教育科技', description: '知识图谱构建', label: 'EdTech' },
+  { color: '#12122a', title: '金融服务', description: '合规语义优化', label: 'Finance' }
 ];
 
 const cardData = computed(() => props.cards && props.cards.length ? props.cards : defaultCards);
@@ -712,12 +712,92 @@ const setupCardRef = (el: HTMLDivElement | null, index: number) => {
   --glow-intensity: 0;
   --glow-radius: 200px;
   --glow-color: v-bind(glowColor);
-  --border-color: #333;
+  --border-color: rgba(255, 255, 255, 0.12);
   --background-dark: #060010;
   --white: hsl(0, 0%, 100%);
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  position: relative;
+  user-select: none;
+}
+
+/* Tailwind utility replacements */
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.justify-between { justify-content: space-between; }
+.gap-3 { gap: 0.75rem; }
+.text-white { color: #fff; }
+.text-base { font-size: 1rem; }
+.text-xs { font-size: 0.75rem; }
+.leading-5 { line-height: 1.25rem; }
+.opacity-90 { opacity: 0.9; }
+.font-normal { font-weight: 400; }
+.m-0 { margin: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.select-none { user-select: none; }
+
+/* Card base styles (replaces Tailwind baseClassName) */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  min-height: 200px;
+  width: 100%;
+  max-width: 100%;
+  padding: 1.25rem;
+  border-radius: 20px;
+  border: 1px solid;
+  font-weight: 300;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card inner layout */
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  position: relative;
+  color: #fff;
+}
+
+.card__label {
+  font-size: 1rem;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #fff;
+}
+
+.card__title {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+  line-height: 1.4;
+}
+
+.card__description {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  opacity: 0.9;
+  margin: 0;
 }
 
 .card-responsive {
+  display: grid;
+  gap: 0.5rem;
   grid-template-columns: 1fr;
   width: 90%;
   margin: 0 auto;

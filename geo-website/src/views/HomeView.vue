@@ -27,25 +27,21 @@ const platforms = [
 const crisisCards = [
   {
     title: '品牌在AI中无露出',
-    desc: '当用户在AI平台搜索行业相关问题时，您的品牌完全缺席。',
     items: ['搜索结果零曝光', '用户无法获取品牌信息', '错失潜在客户触达', '品牌认知度持续下降'],
     level: 'warning'
   },
   {
     title: '品牌在AI中结果有误',
-    desc: 'AI对品牌的描述存在事实错误、信息过时或负面偏差。',
     items: ['品牌描述存在错误', '信息严重过时失真', '负面偏差影响信任', '专业形象受损'],
     level: 'info'
   },
   {
     title: '品牌在AI推荐中落后',
-    desc: 'AI优先推荐竞争对手，您的品牌被边缘化。',
     items: ['竞品占据推荐位', '品牌被持续边缘化', '错失首次接触机会', '高意向客户流失'],
     level: 'info'
   },
   {
     title: 'AI传播品牌黑料',
-    desc: 'AI抓取并放大网络上关于品牌的负面信息，持续传播。',
     items: ['负面信息被放大', '缺乏正面内容制衡', '持续传播难消除', '品牌声誉受威胁'],
     level: 'warning'
   }
@@ -407,51 +403,136 @@ onMounted(() => {
           </div>
           <div class="hero-visual reveal">
             <div class="system-loader">
-              <svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="loader-svg">
+              <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" class="loader-svg">
                 <defs>
-                  <linearGradient id="traceGradient1" x1="250" y1="120" x2="100" y2="200" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#00ccff" stop-opacity="1"></stop>
-                    <stop offset="100%" stop-color="#00ccff" stop-opacity="0.5"></stop>
+                  <!-- Glow Filters -->
+                  <filter id="glow-purple" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="6" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                  <filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="5" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+
+                  <!-- Gradients -->
+                  <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#7c3aed" stop-opacity="1"/>
+                    <stop offset="50%" stop-color="#a78bfa" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#818cf8" stop-opacity="0.8"/>
                   </linearGradient>
-                  <linearGradient id="traceGradient2" x1="650" y1="120" x2="800" y2="300" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#00ccff" stop-opacity="1"></stop>
-                    <stop offset="100%" stop-color="#00ccff" stop-opacity="0.5"></stop>
+
+                  <linearGradient id="flowGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#7c3aed" stop-opacity="0"/>
+                    <stop offset="50%" stop-color="#a78bfa" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
                   </linearGradient>
-                  <linearGradient id="traceGradient3" x1="250" y1="380" x2="400" y2="400" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#00ccff" stop-opacity="1"></stop>
-                    <stop offset="100%" stop-color="#00ccff" stop-opacity="0.5"></stop>
+
+                  <linearGradient id="panelGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(75,51,255,0.22)"/>
+                    <stop offset="100%" stop-color="rgba(75,51,255,0.08)"/>
                   </linearGradient>
-                  <linearGradient id="traceGradient4" x1="650" y1="120" x2="500" y2="100" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#00ccff" stop-opacity="1"></stop>
-                    <stop offset="100%" stop-color="#00ccff" stop-opacity="0.5"></stop>
+
+                  <linearGradient id="barGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#7c3aed"/>
+                    <stop offset="100%" stop-color="#a78bfa"/>
+                  </linearGradient>
+
+                  <!-- Scanline Mask -->
+                  <linearGradient id="scanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="white" stop-opacity="0"/>
+                    <stop offset="50%" stop-color="white" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="white" stop-opacity="0"/>
                   </linearGradient>
                 </defs>
 
+                <!-- Background Grid -->
                 <g id="grid">
-                  <g>
-                    <line v-for="i in 17" :key="'vl'+i" :x1="(i-1)*100" y1="0" :x2="(i-1)*100" y2="100%" class="grid-line"></line>
-                  </g>
-                  <g>
-                    <line v-for="i in 9" :key="'hl'+i" x1="0" :y1="i*100" x2="100%" :y2="i*100" class="grid-line"></line>
-                  </g>
+                  <line v-for="i in 10" :key="'v'+i" :x1="i*90" y1="0" :x2="i*90" y2="600" class="grid-line"/>
+                  <line v-for="i in 7" :key="'h'+i" x1="0" :y1="i*85" x2="900" :y2="i*85" class="grid-line"/>
                 </g>
 
-                <g id="browser" transform="translate(0, 200)">
-                  <rect x="250" y="120" width="400" height="260" rx="8" ry="8" class="browser-frame"></rect>
-                  <rect x="250" y="120" width="400" height="30" rx="8" ry="8" class="browser-top"></rect>
-                  <text x="294" y="140" text-anchor="middle" class="loading-text">GEO System</text>
-                  <rect x="270" y="160" width="360" height="20" class="skeleton"></rect>
-                  <rect x="270" y="190" width="200" height="15" class="skeleton"></rect>
-                  <rect x="270" y="215" width="300" height="15" class="skeleton"></rect>
-                  <rect x="270" y="240" width="360" height="90" class="skeleton"></rect>
-                  <rect x="270" y="340" width="180" height="20" class="skeleton"></rect>
+                <!-- Connection Nodes (pulse) - bigger & brighter -->
+                <g id="nodes">
+                  <circle cx="120" cy="180" r="7" class="pulse-node"/>
+                  <circle cx="780" cy="140" r="7" class="pulse-node" style="animation-delay: 0.4s"/>
+                  <circle cx="180" cy="420" r="7" class="pulse-node" style="animation-delay: 0.8s"/>
+                  <circle cx="720" cy="460" r="7" class="pulse-node" style="animation-delay: 1.2s"/>
+                  <circle cx="450" cy="80" r="8" class="pulse-node" style="animation-delay: 1.6s"/>
                 </g>
 
-                <g id="traces" transform="translate(0, 200)">
-                  <path d="M100 300 H250 V120" class="trace-flow"></path>
-                  <path d="M800 200 H650 V380" class="trace-flow"></path>
-                  <path d="M400 520 V380 H250" class="trace-flow"></path>
-                  <path d="M500 50 V120 H650" class="trace-flow"></path>
+                <!-- Data Flow Lines - wider -->
+                <g id="data-flows">
+                  <path d="M120 180 H230 V120" class="data-flow"/>
+                  <path d="M780 140 H670 V120" class="data-flow" style="animation-delay: 0.5s"/>
+                  <path d="M180 420 H230 V350" class="data-flow" style="animation-delay: 1s"/>
+                  <path d="M720 460 H670 V350" class="data-flow" style="animation-delay: 1.5s"/>
+                  <path d="M450 80 V120" class="data-flow" style="animation-delay: 0.3s"/>
+                </g>
+
+                <!-- Central GEO Dashboard Panel - WIDER & TALLER -->
+                <g id="geo-panel">
+                  <!-- Panel Frame -->
+                  <rect x="230" y="120" width="440" height="280" rx="14" class="panel-frame"/>
+                  <rect x="230" y="120" width="440" height="40" rx="14" class="panel-header"/>
+                  <rect x="230" y="148" width="440" height="12" class="panel-header-base"/>
+
+                  <!-- Status Dot -->
+                  <circle cx="255" cy="140" r="5" class="status-dot"/>
+                  <text x="270" y="145" class="panel-title">GEO Intelligence Engine</text>
+
+                  <!-- Metrics Bars - bigger -->
+                  <rect x="255" y="175" width="160" height="14" rx="7" class="metric-bg"/>
+                  <rect x="255" y="175" width="120" height="14" rx="7" class="metric-bar" style="animation-delay: 0s"/>
+                  <text x="425" y="186" class="metric-label">语义覆盖 92%</text>
+
+                  <rect x="255" y="200" width="160" height="14" rx="7" class="metric-bg"/>
+                  <rect x="255" y="200" width="140" height="14" rx="7" class="metric-bar" style="animation-delay: 0.3s"/>
+                  <text x="425" y="211" class="metric-label">AI引用率 87%</text>
+
+                  <rect x="255" y="225" width="160" height="14" rx="7" class="metric-bg"/>
+                  <rect x="255" y="225" width="100" height="14" rx="7" class="metric-bar" style="animation-delay: 0.6s"/>
+                  <text x="425" y="236" class="metric-label">品牌信任 78%</text>
+
+                  <!-- Activity Blocks - bigger -->
+                  <rect x="255" y="255" width="95" height="60" rx="8" class="activity-block" style="animation-delay: 0s"/>
+                  <rect x="360" y="255" width="95" height="60" rx="8" class="activity-block" style="animation-delay: 0.2s"/>
+                  <rect x="465" y="255" width="95" height="60" rx="8" class="activity-block" style="animation-delay: 0.4s"/>
+                  <rect x="570" y="255" width="80" height="60" rx="8" class="activity-block" style="animation-delay: 0.6s"/>
+
+                  <!-- Scan Line -->
+                  <rect x="230" y="120" width="440" height="50" rx="14" fill="url(#scanGradient)" class="scan-line"/>
+                </g>
+
+                <!-- Side Data Cards - bigger -->
+                <g id="side-cards">
+                  <rect x="30" y="200" width="180" height="110" rx="10" class="side-card"/>
+                  <text x="55" y="232" class="side-card-title">AI Platform</text>
+                  <text x="55" y="265" class="side-card-value">7+</text>
+                  <text x="55" y="292" class="side-card-sub">Models Monitored</text>
+
+                  <rect x="690" y="200" width="180" height="110" rx="10" class="side-card"/>
+                  <text x="715" y="232" class="side-card-title">Keywords</text>
+                  <text x="715" y="265" class="side-card-value">2.4K</text>
+                  <text x="715" y="292" class="side-card-sub">Tracked Daily</text>
+                </g>
+
+                <!-- Bottom Status Bar - wider -->
+                <g id="status-bar">
+                  <rect x="150" y="430" width="600" height="40" rx="20" class="status-bar-bg"/>
+                  <text x="185" y="456" class="status-text">System Status:</text>
+                  <text x="310" y="456" class="status-active">OPTIMIZING</text>
+                  <circle cx="445" cy="450" r="4" class="status-blink"/>
+                  <text x="462" y="456" class="status-detail">Real-time GEO analysis running...</text>
                 </g>
               </svg>
             </div>
@@ -488,7 +569,6 @@ onMounted(() => {
             :key="i"
             :level="card.level"
             :title="card.title"
-            :body="card.desc"
             :tags="card.items"
             class="reveal"
             :style="{ animationDelay: `${i * 0.1}s` }"
@@ -504,26 +584,27 @@ onMounted(() => {
           <h2 class="section-title">为什么选择智优康赛</h2>
         </div>
         <div class="features-grid">
-          <BorderGlow
+          <GlassSurface
             v-for="(f, i) in features"
             :key="i"
             class="feature-card reveal"
-            :backgroundColor="'rgba(6, 0, 16, 0.85)'"
+            width="100%"
+            height="100%"
             :borderRadius="16"
-            :glowRadius="30"
-            :glowIntensity="0.8"
-            :coneSpread="25"
-            :edgeSensitivity="25"
-            glowColor="260 80 65"
-            :colors="['#a855f7', '#6366f1', '#38bdf8']"
-            :fillOpacity="0.4"
-            :animated="true"
+            :backgroundOpacity="0.15"
+            :brightness="80"
+            :opacity="0.6"
+            :blur="10"
+            :distortionScale="-180"
+            :borderWidth="0.06"
             :style="{ animationDelay: `${i * 0.08}s` }"
           >
-            <div class="feature-num">0{{ i + 1 }}</div>
-            <h3 class="feature-title">{{ f.title }}</h3>
-            <p class="feature-desc">{{ f.desc }}</p>
-          </BorderGlow>
+            <div class="feature-card__inner">
+              <div class="feature-num">0{{ i + 1 }}</div>
+              <h3 class="feature-title">{{ f.title }}</h3>
+              <p class="feature-desc">{{ f.desc }}</p>
+            </div>
+          </GlassSurface>
         </div>
       </div>
     </section>
@@ -1099,30 +1180,43 @@ onMounted(() => {
 .hero-visual {
   flex: 1;
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
 
   @media (min-width: 1024px) {
     max-width: none;
   }
 }
 
-// ========== SYSTEM LOADER SVG ==========
+// ========== SYSTEM LOADER SVG - GEO Intelligence Dashboard ==========
 .system-loader {
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
   border-radius: $radius-xl;
   overflow: hidden;
-  background: rgba(3, 4, 10, 0.6);
-  border: 1px solid rgba(75, 51, 255, 0.12);
-  padding: $space-4;
+  background: rgba(15, 10, 40, 0.75);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  padding: $space-6;
   transform: perspective(1000px) rotateY(-3deg) rotateX(2deg);
-  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  box-shadow:
+    0 0 50px rgba(75, 51, 255, 0.2),
+    0 0 100px rgba(75, 51, 255, 0.1),
+    0 0 200px rgba(139, 92, 246, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
   &:hover {
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    box-shadow:
+      0 0 80px rgba(75, 51, 255, 0.35),
+      0 0 160px rgba(75, 51, 255, 0.15),
+      0 0 300px rgba(139, 92, 246, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border-color: rgba(139, 92, 246, 0.55);
   }
 
   @media (min-width: 1024px) {
-    padding: $space-6;
+    padding: $space-8;
   }
 }
 
@@ -1130,75 +1224,238 @@ onMounted(() => {
   width: 100%;
   height: auto;
   display: block;
+  filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.25));
 
+  // Grid
   .grid-line {
-    stroke: rgba(75, 51, 255, 0.06);
+    stroke: rgba(139, 92, 246, 0.18);
     stroke-width: 1;
   }
 
-  .browser-frame {
-    fill: rgba(10, 10, 20, 0.8);
-    stroke: rgba(75, 51, 255, 0.2);
-    stroke-width: 1;
+  // Pulse Nodes
+  .pulse-node {
+    fill: #a78bfa;
+    filter: url(#glow-purple);
+    animation: nodePulse 2s ease-in-out infinite;
   }
 
-  .browser-top {
-    fill: rgba(75, 51, 255, 0.12);
+  // Data Flow Lines
+  .data-flow {
+    fill: none;
+    stroke: url(#purpleGradient);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: dataFlow 2.5s linear infinite;
+    filter: url(#glow-purple);
   }
 
-  .loading-text {
-    fill: rgba(0, 204, 255, 0.8);
-    font-family: 'Inter', monospace;
+  // Panel
+  .panel-frame {
+    fill: url(#panelGradient);
+    stroke: rgba(167, 139, 250, 0.4);
+    stroke-width: 2;
+    filter: url(#glow-purple);
+  }
+
+  .panel-header {
+    fill: rgba(75, 51, 255, 0.35);
+  }
+
+  .panel-header-base {
+    fill: rgba(75, 51, 255, 0.18);
+  }
+
+  .panel-title {
+    fill: rgba(255, 255, 255, 0.95);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  // Status Dot
+  .status-dot {
+    fill: #22d3ee;
+    filter: url(#glow-cyan);
+    animation: statusBlink 1.5s ease-in-out infinite;
+  }
+
+  // Metrics
+  .metric-bg {
+    fill: rgba(75, 51, 255, 0.15);
+  }
+
+  .metric-bar {
+    fill: url(#barGradient);
+    animation: metricGrow 2s ease-out infinite alternate;
+  }
+
+  .metric-label {
+    fill: rgba(255, 255, 255, 0.75);
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 500;
   }
 
-  .skeleton {
-    fill: rgba(75, 51, 255, 0.08);
-    rx: 4;
-
-    &:nth-child(4) {
-      animation: skeletonPulse 2s ease-in-out infinite;
-    }
-    &:nth-child(5) {
-      animation: skeletonPulse 2s ease-in-out 0.3s infinite;
-    }
-    &:nth-child(6) {
-      animation: skeletonPulse 2s ease-in-out 0.6s infinite;
-    }
+  // Activity Blocks
+  .activity-block {
+    fill: rgba(139, 92, 246, 0.22);
+    stroke: rgba(167, 139, 250, 0.35);
+    stroke-width: 1;
+    animation: activityPulse 2s ease-in-out infinite;
   }
 
-  .trace-flow {
-    fill: none;
-    stroke: url(#traceGradient1);
-    stroke-width: 2;
-    stroke-dasharray: 800;
-    stroke-dashoffset: 800;
-    animation: traceFlow 3s linear infinite;
+  // Scan Line
+  .scan-line {
+    animation: scanMove 3s linear infinite;
+  }
 
-    &:nth-child(2) {
-      stroke: url(#traceGradient2);
-      animation-delay: 0.5s;
-    }
-    &:nth-child(3) {
-      stroke: url(#traceGradient3);
-      animation-delay: 1s;
-    }
-    &:nth-child(4) {
-      stroke: url(#traceGradient4);
-      animation-delay: 1.5s;
-    }
+  // Side Cards
+  .side-card {
+    fill: rgba(75, 51, 255, 0.12);
+    stroke: rgba(167, 139, 250, 0.3);
+    stroke-width: 1;
+  }
+
+  .side-card-title {
+    fill: rgba(255, 255, 255, 0.6);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .side-card-value {
+    fill: #c4b5fd;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    filter: url(#glow-purple);
+  }
+
+  .side-card-sub {
+    fill: rgba(255, 255, 255, 0.5);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  // Status Bar
+  .status-bar-bg {
+    fill: rgba(75, 51, 255, 0.15);
+    stroke: rgba(167, 139, 250, 0.3);
+    stroke-width: 1;
+  }
+
+  .status-text {
+    fill: rgba(255, 255, 255, 0.6);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .status-active {
+    fill: #22d3ee;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    filter: url(#glow-cyan);
+    animation: statusGlow 2s ease-in-out infinite;
+  }
+
+  .status-blink {
+    fill: #22d3ee;
+    animation: statusBlink 1s ease-in-out infinite;
+  }
+
+  .status-detail {
+    fill: rgba(255, 255, 255, 0.45);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
   }
 }
 
-@keyframes skeletonPulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+// ========== GEO Dashboard Animations ==========
+@keyframes nodePulse {
+  0%, 100% {
+    r: 5;
+    opacity: 0.6;
+  }
+  50% {
+    r: 10;
+    opacity: 1;
+  }
 }
 
-@keyframes traceFlow {
-  0% { stroke-dashoffset: 800; }
-  100% { stroke-dashoffset: 0; }
+@keyframes dataFlow {
+  0% {
+    stroke-dashoffset: 300;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes metricGrow {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes activityPulse {
+  0%, 100% {
+    fill-opacity: 0.15;
+    stroke-opacity: 0.25;
+  }
+  50% {
+    fill-opacity: 0.35;
+    stroke-opacity: 0.5;
+  }
+}
+
+@keyframes scanMove {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes statusGlow {
+  0%, 100% {
+    fill: #22d3ee;
+    opacity: 0.8;
+  }
+  50% {
+    fill: #67e8f9;
+    opacity: 1;
+  }
 }
 
 // ========== PLATFORMS MARQUEE ==========
@@ -1269,38 +1526,27 @@ onMounted(() => {
   padding: 80px 0;
   position: relative;
   background:
-    linear-gradient(rgba(3, 4, 10, 0.82), rgba(3, 4, 10, 0.88)),
-    url('/images/home-section-bg.png') center center / cover no-repeat;
+    linear-gradient(rgba(3, 4, 10, 0.55), rgba(3, 4, 10, 0.65)),
+    url('/images/section-bg-new.jpg') center center / cover no-repeat;
   overflow: hidden;
 
   @media (min-width: 1024px) {
     padding: 120px 0;
   }
 
-  // Section radar decoration (top-right corner)
-  &::after {
-    content: '';
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 1px solid rgba(75, 51, 255, 0.06);
-    pointer-events: none;
-    z-index: 0;
-    animation: radarDotBlink 6s ease-in-out infinite;
-  }
-
   > .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 }
 
 .section-header {
   text-align: center;
   margin-bottom: $space-12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-4;
 }
 
 .section-title {
@@ -1481,11 +1727,22 @@ onMounted(() => {
 }
 
 .feature-card {
-  padding: $space-6;
+  min-height: 200px;
   transition: transform $transition-fast;
 
   &:hover {
     transform: translateY(-4px);
+  }
+
+  :deep(.glass-surface) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  &__inner {
+    padding: $space-6;
+    width: 100%;
+    text-align: left;
   }
 }
 

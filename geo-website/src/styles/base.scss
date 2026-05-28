@@ -66,10 +66,6 @@ body {
   font-weight: $font-bold;
   text-align: center;
   margin-bottom: $space-4;
-
-  @media (max-width: 768px) {
-    text-align: left;
-  }
 }
 
 .section-subtitle {
@@ -80,8 +76,7 @@ body {
   margin: 0 auto $space-16;
 
   @media (max-width: 768px) {
-    text-align: left;
-    margin: 0 0 $space-12 0;
+    margin: 0 auto $space-12;
   }
 }
 

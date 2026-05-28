@@ -4,14 +4,15 @@
 - **项目名称**: 智优康赛GEO战略服务商官网
 - **工作目录**: `/Users/rose/WorkBuddy/2026-05-25-14-09-56/geo-website/`
 - **技术栈**: Vue 3.5 + TypeScript + Vite 5 + Vue Router 4 + SCSS + ogl + motion-v + gsap + SVG Filters
-- **设计风格**: 深空黑底色(#03040a) + 紫色主色调(#4b33ff) + GlassSurface光学折射 + Orb WebGL背景 + Aurora极光标题背景 + BlurText逐词模糊入场 + FloatingLines浮动光线
-- **部署目标**: GitHub Pages (base: './')
+- **设计风格**: 深空黑底色(#03040a) + 紫色主色调(#4b33ff) + GlassSurface光学折射 + Orb WebGL背景 + Aurora极光标题背景 + BlurText逐词模糊入场 + FloatingLines浮动光线 + Particles粒子背景
+- **部署目标**: GitHub Pages (base: './') + EdgeOne Pages (永久线上链接)
+- **EdgeOne Pages**: 项目 `geo-website`, ID `pages-htybfe6lfbxo`, 账号 Rose小瑶
 
 ## 设计规范
 - **背景色**: `#03040a` 深空黑
 - **主色调**: `#4b33ff` 紫色渐变到 `#4c75ff` 蓝色
 - **卡片**: GlassSurface组件（vue-bits，SVG filter displacement map光学折射），替代GlassPanel
-- **按钮**: cssbuttons-io简洁风格（8px微圆角，光泽滑过动画，outline变体），从blob→sparkle→blob→cssbuttons-io迭代
+- **按钮**: Uiverse conic-gradient旋转边框风格（by Lakshay-art），4层conic-gradient动画边框+深色按钮本体+搜索图标，从blob→sparkle→blob→cssbuttons-io→液态玻璃→conic-gradient迭代
 - **圆角**: 卡片12px，按钮8px微圆角，小元素4-8px
 - **字体**: Inter，响应式clamp字号
 - **间距**: 使用变量体系，section间距96px/64px(mobile)
@@ -35,9 +36,9 @@
 
 ## 页面结构（6页）
 1. **首页** (index) - ✅ 已完成
-2. **解决方案** (solutions) - ✅ 已完成 - 全方位GEO(4数据卡片+概述)/主流平台(12个pill)/优化策略(被找到→被采纳→被认可三部曲)/GEO 3C法则(理解/信任/推荐)/全栈服务(tab切换6类)/GEO成效(4数据卡片)/CTA
-3. **客户案例** (cases) - ✅ 已完成 - 成效数据(6个GlassSurface卡片)/客户评价(2张引用卡片:栖息地+得实)/合作伙伴(35个logo网格)/CTA
-4. **智优平台** (platform) - ✅ 已完成 - 智优系统(GeoWorkflow自动播放垂直工作流)/核心功能(左标题+右5步时间线)/系统优势(4大数据卡片，无描述文字)/系统赋能(BentoGrid gsap粒子聚光灯网格，6行业卡片，只写文字不放图片)
+2. **解决方案** (solutions) - ✅ 已完成 - 全方位GEO(Profound风格：左标题+右终端演示，4功能标签切换)/主流平台(12个pill)/优化策略(被找到→被采纳→被认可三部曲)/GEO 3C法则(理解/信任/推荐)/全栈服务(Uiverse手风琴折叠卡片，10服务各独立色条)/GEO成效(双手机并排3D倾斜轮播，各自独立4截图循环)/CTA
+3. **客户案例** (cases) - ✅ 已完成 - 成效数据(Uiverse skill-bar进度条，6条)/客户评价(可左右滑动卡片轮播，栖息地+得实)/合作伙伴(35个logo网格)/CTA
+4. **智优平台** (platform) - ✅ 已完成 - 智优系统(GeoWorkflow自动播放垂直工作流)/核心功能(左标题+右5步时间线)/系统优势(Uiverse数据看板卡片，2×2网格，4卡片独立配色主题，含指标+柱状图+Live标签)/系统赋能(BentoGrid gsap粒子聚光灯网格，6行业卡片，只写文字不放图片)
 5. **关于我们** (about) - ✅ 已完成 - Hero(MagicRings+logo-white+标题)/公司介绍(双栏)/发展历程(ScrollStack滚动堆叠5年份卡片)/权威背书(渠成照片+介绍)/核心团队(Uiverse资料卡+数据亮点)/客户案例(35个logo网格)/CTA
 6. **资源中心** (resources) - ✅ 已完成 - GEO白皮书/GEO联盟(CGIA)/GEO常见问题(手风琴折叠)
 

@@ -71,7 +71,7 @@ const config = computed(() => levelConfig[props.level] || levelConfig.warning)
       </svg>
       {{ title }}
     </div>
-    <div class="notibody">{{ body }}</div>
+    <div v-if="body" class="notibody">{{ body }}</div>
     <div v-if="tags.length" class="noti-tags">
       <span
         v-for="tag in tags"

@@ -233,8 +233,8 @@ const handleSubmit = () => {
   border-radius: 24px;
   overflow: hidden;
   animation: formSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(6, 0, 16, 0.92);
-  border: 1px solid rgba(75, 51, 255, 0.15);
+  background: rgba(15, 8, 30, 0.95);
+  border: 1px solid rgba(75, 51, 255, 0.2);
   box-shadow:
     0 0 60px rgba(75, 51, 255, 0.08),
     0 24px 80px rgba(0, 0, 0, 0.5);
@@ -404,7 +404,7 @@ const handleSubmit = () => {
 .form-label {
   font-size: 12px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -412,8 +412,8 @@ const handleSubmit = () => {
 .form-input {
   width: 100%;
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   color: #fff;
   font-size: 14px;
@@ -423,13 +423,13 @@ const handleSubmit = () => {
   box-sizing: border-box;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.35);
   }
 
   &:focus {
-    border-color: rgba(75, 51, 255, 0.4);
-    background: rgba(75, 51, 255, 0.04);
-    box-shadow: 0 0 16px rgba(75, 51, 255, 0.06);
+    border-color: rgba(75, 51, 255, 0.5);
+    background: rgba(75, 51, 255, 0.08);
+    box-shadow: 0 0 16px rgba(75, 51, 255, 0.1);
   }
 }
 
@@ -459,26 +459,26 @@ const handleSubmit = () => {
   display: inline-flex;
   align-items: center;
   padding: 7px 14px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 
   &:hover {
-    border-color: rgba(75, 51, 255, 0.3);
-    background: rgba(75, 51, 255, 0.06);
-    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(75, 51, 255, 0.4);
+    background: rgba(75, 51, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
   }
 
   &.active {
-    background: rgba(75, 51, 255, 0.15);
-    border-color: rgba(75, 51, 255, 0.5);
+    background: rgba(75, 51, 255, 0.2);
+    border-color: rgba(75, 51, 255, 0.55);
     color: #fff;
-    box-shadow: 0 0 16px rgba(75, 51, 255, 0.12);
+    box-shadow: 0 0 16px rgba(75, 51, 255, 0.18);
   }
 }
 
