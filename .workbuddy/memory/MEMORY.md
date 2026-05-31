@@ -6,7 +6,13 @@
 - **技术栈**: Vue 3.5 + TypeScript + Vite 5 + Vue Router 4 + SCSS + ogl + motion-v + gsap + SVG Filters
 - **设计风格**: 深空黑底色(#03040a) + 紫色主色调(#4b33ff) + GlassSurface光学折射 + Orb WebGL背景 + Aurora极光标题背景 + BlurText逐词模糊入场 + FloatingLines浮动光线 + Particles粒子背景
 - **部署目标**: GitHub Pages (base: './') + EdgeOne Pages (永久线上链接)
-- **EdgeOne Pages**: 项目 `geo-website`, ID `pages-htybfe6lfbxo`, 账号 Rose小瑶
+- **GitHub Pages**（⭐ 主要分享链接，无token，永久稳定）:
+  - 链接: `https://liuyao212212-netizen.github.io/geo-website/`
+  - 仓库: `https://github.com/liuyao212212-netizen/geo-website`
+  - 账号: liuyao212212-netizen (gh CLI已登录)
+  - 自动部署: push main → GitHub Actions 构建
+  - git目录在父级 `/Users/rose/WorkBuddy/2026-05-25-14-09-56/`，geo-website是子目录
+- **EdgeOne Pages**: 项目 `geo-website`, ID `pages-htybfe6lfbxo`, 账号 Rose小瑶（需eo_token，每次部署换token，不适合分享）
 
 ## 设计规范
 - **背景色**: `#03040a` 深空黑
